@@ -1,5 +1,7 @@
 import 'package:financas_controle/2-app/controllers/mainMenuController.dart';
 import 'package:financas_controle/2-app/helpers/phoneTablet.dart';
+import 'package:financas_controle/2-app/views/componentsWidgets/billCardWidget.dart';
+import 'package:financas_controle/2-app/views/componentsWidgets/menuOptionsWidget.dart';
 import 'package:financas_controle/2-app/views/componentsWidgets/textWidget.dart';
 import 'package:financas_controle/2-app/views/stylePages/appColors.dart';
 import 'package:flutter/material.dart';
@@ -211,8 +213,8 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                     itemBuilder: (context, index){
                                       return Padding(
                                         padding: EdgeInsets.only(right: 2.w),
-                                        child: ExerciseCardWidget(
-                                          exerciseItem: controller.favoriteExercises[index],
+                                        child: BillCardWidget(
+                                          billItem: controller.favoriteExercises[index],
                                         ),
                                       );
                                     },
@@ -245,8 +247,8 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                     itemBuilder: (context, index){
                                       return Padding(
                                         padding: EdgeInsets.only(right: 2.w),
-                                        child: ExerciseCardWidget(
-                                          exerciseItem: controller.recommendedExercise[index],
+                                        child: BillCardWidget(
+                                          billItem: controller.recommendedExercise[index],
                                         ),
                                       );
                                     },
@@ -279,8 +281,8 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                     itemBuilder: (context, index){
                                       return Padding(
                                         padding: EdgeInsets.only(right: 2.w),
-                                        child: ExerciseCardWidget(
-                                          exerciseItem: controller.lastAddedExercises[index],
+                                        child: BillCardWidget(
+                                          billItem: controller.lastAddedExercises[index],
                                         ),
                                       );
                                     },

@@ -3,6 +3,7 @@ import 'package:financas_controle/2-app/helpers/paths.dart';
 import 'package:financas_controle/2-app/views/componentsWidgets/buttonWidget.dart';
 import 'package:financas_controle/2-app/views/componentsWidgets/textWidget.dart';
 import 'package:financas_controle/2-app/views/stylePages/appColors.dart';
+import 'package:financas_controle/2-app/views/viewsWidgets/backgroundsWidget/welcomePageBackgroundWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
