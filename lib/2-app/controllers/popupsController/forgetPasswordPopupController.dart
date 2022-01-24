@@ -1,6 +1,6 @@
 import 'package:email_validator/email_validator.dart';
+import 'package:financas_controle/2-app/helpers/internetConnection.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_project/2-app/helpers/internetConnection.dart';
 import 'package:get/get.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 

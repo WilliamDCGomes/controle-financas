@@ -1,10 +1,8 @@
+import 'package:financas_controle/2-app/controllers/mainMenuController.dart';
+import 'package:financas_controle/2-app/helpers/phoneTablet.dart';
+import 'package:financas_controle/2-app/views/componentsWidgets/textWidget.dart';
+import 'package:financas_controle/2-app/views/stylePages/appColors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_project/2-app/controllers/mainMenuController.dart';
-import 'package:flutter_project/2-app/helpers/phoneTablet.dart';
-import 'package:flutter_project/2-app/views/componentsWidgets/exerciseCardWidget.dart';
-import 'package:flutter_project/2-app/views/componentsWidgets/menuOptionsWidget.dart';
-import 'package:flutter_project/2-app/views/componentsWidgets/textWidget.dart';
-import 'package:flutter_project/2-app/views/stylePages/appColors.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 

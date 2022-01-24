@@ -1,7 +1,7 @@
+import 'package:financas_controle/2-app/views/pages/mainMenuPage.dart';
+import 'package:financas_controle/2-app/views/pages/popups/forgetPasswordPopup.dart';
+import 'package:financas_controle/2-app/views/pages/registerPage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_project/2-app/views/pages/mainMenuPage.dart';
-import 'package:flutter_project/2-app/views/pages/popups/forgetPasswordPopup.dart';
-import 'package:flutter_project/2-app/views/pages/registerPage.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {

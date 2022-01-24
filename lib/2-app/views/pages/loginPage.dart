@@ -1,11 +1,11 @@
+import 'package:financas_controle/2-app/controllers/loginController.dart';
+import 'package:financas_controle/2-app/helpers/paths.dart';
+import 'package:financas_controle/2-app/helpers/phoneTablet.dart';
+import 'package:financas_controle/2-app/views/componentsWidgets/buttonWidget.dart';
+import 'package:financas_controle/2-app/views/componentsWidgets/textFieldWidget.dart';
+import 'package:financas_controle/2-app/views/componentsWidgets/textWidget.dart';
+import 'package:financas_controle/2-app/views/stylePages/appColors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_project/2-app/controllers/loginController.dart';
-import 'package:flutter_project/2-app/helpers/paths.dart';
-import 'package:flutter_project/2-app/helpers/phoneTablet.dart';
-import 'package:flutter_project/2-app/views/componentsWidgets/buttonWidget.dart';
-import 'package:flutter_project/2-app/views/componentsWidgets/textFieldWidget.dart';
-import 'package:flutter_project/2-app/views/componentsWidgets/textWidget.dart';
-import 'package:flutter_project/2-app/views/stylePages/appColors.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 

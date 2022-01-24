@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/2-app/views/pages/loginPage.dart';
 import 'package:get/get.dart';
 
 class RegisterController extends GetxController {

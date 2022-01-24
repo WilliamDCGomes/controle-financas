@@ -1,6 +1,6 @@
+import 'package:financas_controle/2-app/views/pages/loginPage.dart';
+import 'package:financas_controle/2-app/views/pages/registerPage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_project/2-app/views/pages/loginPage.dart';
-import 'package:flutter_project/2-app/views/pages/registerPage.dart';
 import 'package:get/get.dart';
 
 class WelcomeController extends GetxController {
