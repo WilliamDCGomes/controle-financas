@@ -1,4 +1,4 @@
-import 'package:financas_controle/2-app/controllers/popupsController/initialPageController.dart';
+import 'package:financas_controle/2-app/controllers/initialPageController.dart';
 import 'package:flutter/material.dart';
 
 class InitialPage extends StatefulWidget {

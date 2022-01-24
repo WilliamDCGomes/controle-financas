@@ -1,5 +1,5 @@
 
-import 'package:financas_controle/2-app/views/pages/popups/welcomePage.dart';
+import 'package:financas_controle/2-app/views/pages/welcomePage.dart';
 import 'package:get/get.dart';
 
 class InitialPageController extends GetxController {
