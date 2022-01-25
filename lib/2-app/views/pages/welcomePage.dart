@@ -42,14 +42,14 @@ class _WelcomePageState extends State<WelcomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(bottom: 3.5.h),
+                    padding: EdgeInsets.only(left: 1.h, right: 1.h, bottom: 3.5.h),
                     child: Column(
                       children: [
                         AnimatedSlide(
                           offset: controller.offset0,
                           duration: const Duration(milliseconds: 600),
                           child: TextWidget(
-                            "Comece a praticar agora!",
+                            "Comece a controlar sua vida",
                             fontWeight: FontWeight.bold,
                             fontSize: 20.sp,
                           ),
@@ -58,7 +58,7 @@ class _WelcomePageState extends State<WelcomePage> {
                           offset: controller.offset1,
                           duration: const Duration(milliseconds: 750),
                           child: TextWidget(
-                            "Faça o seu Login",
+                            "financeira agora!",
                             fontWeight: FontWeight.bold,
                             fontSize: 20.sp,
                           ),

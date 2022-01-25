@@ -42,7 +42,7 @@ class MenuOptionsWidget extends StatelessWidget {
                 padding: EdgeInsets.only(top: 1.h),
                 child: TextWidget(
                   text,
-                  textColor: textColor ?? AppColors().blackColor91Percent,
+                  textColor: textColor ?? AppColors().whiteColor,
                   fontSize: textSize ?? (PhoneTablet().isPhone(context) ?
                   16.sp : 14.sp),
                   fontWeight: FontWeight.bold,

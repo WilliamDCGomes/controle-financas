@@ -8,8 +8,6 @@ class RegisterController extends GetxController {
   late TextEditingController userInput;
   late TextEditingController passwordInput;
   late TextEditingController confirmPasswordInput;
-  late TextEditingController collegeNameInput;
-  late TextEditingController courseNameInput;
   late TextEditingController phoneInput;
   late TextEditingController cellphoneInput;
   late RxBool passwordFieldEnabled;
@@ -24,8 +22,6 @@ class RegisterController extends GetxController {
     userInput = TextEditingController();
     passwordInput = TextEditingController();
     confirmPasswordInput = TextEditingController();
-    collegeNameInput = TextEditingController();
-    courseNameInput = TextEditingController();
     phoneInput = TextEditingController();
     cellphoneInput = TextEditingController();
   }

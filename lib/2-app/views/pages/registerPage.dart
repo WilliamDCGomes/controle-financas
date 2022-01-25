@@ -1,4 +1,5 @@
 import 'package:financas_controle/2-app/controllers/registerController.dart';
+import 'package:financas_controle/2-app/helpers/phoneTablet.dart';
 import 'package:financas_controle/2-app/views/componentsWidgets/buttonWidget.dart';
 import 'package:financas_controle/2-app/views/componentsWidgets/textFieldWidget.dart';
 import 'package:financas_controle/2-app/views/componentsWidgets/textWidget.dart';
@@ -28,13 +29,13 @@ class _RegisterPageState extends State<RegisterPage> {
             FocusScope.of(context).requestFocus(FocusNode());
           },
           child: Scaffold(
-            backgroundColor: AppColors().backgroundStandardColor,
+            backgroundColor: AppColors().standardColor,
             appBar: AppBar(
               title: TextWidget(
                 "Cadastro de Usuário",
                 textColor: AppColors().whiteColor,
               ),
-              backgroundColor: AppColors().backgroundStandardColor,
+              backgroundColor: AppColors().standardColor,
             ),
             body: SingleChildScrollView(
               child: Column(
@@ -157,24 +158,6 @@ class _RegisterPageState extends State<RegisterPage> {
                           Padding(
                             padding: EdgeInsets.only(top: 2.h),
                             child: TextFieldWidget(
-                              controller: controller.collegeNameInput,
-                              hintText: "Nome da Faculdade",
-                              width: 75.w,
-                              keyboardType: TextInputType.name,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 2.h),
-                            child: TextFieldWidget(
-                              controller: controller.courseNameInput,
-                              hintText: "Nome do Curso",
-                              width: 75.w,
-                              keyboardType: TextInputType.name,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 2.h),
-                            child: TextFieldWidget(
                               controller: controller.phoneInput,
                               hintText: "Telefone",
                               width: 75.w,
@@ -206,7 +189,10 @@ class _RegisterPageState extends State<RegisterPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(top: 2.5.h, bottom: 2.5.h),
+                        padding: EdgeInsets.only(
+                            top: PhoneTablet().isPhone(context) ? 3.h : 7.h,
+                            bottom: 2.5.h,
+                        ),
                         child: ButtonWidget(
                           onPressed: (){
                             controller.registerButtonPressed();

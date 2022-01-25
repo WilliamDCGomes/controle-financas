@@ -29,7 +29,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
             FocusScope.of(context).requestFocus(FocusNode());
           },
           child: Container(
-            color: AppColors().backgroundStandardColor,
+            color: AppColors().standardColor,
             child: Scaffold(
               backgroundColor: AppColors().transparentColor,
               body: Padding(
@@ -77,7 +77,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
                               Center(
                                 child: TextWidget(
                                   controller.nameInitials,
-                                  textColor: AppColors().backgroundStandardColor,
+                                  textColor: AppColors().standardColor,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 22.sp,
                                   textAlign: TextAlign.start,
@@ -132,7 +132,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                       text: "Exercícios",
                                       icon: Icon(
                                         Icons.code_off_sharp,
-                                        color: AppColors().blackColor91Percent,
+                                        color: AppColors().whiteColor,
                                         size: 6.h,
                                       ),
                                     ),
@@ -140,7 +140,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                       text: "Recomendados",
                                       icon: Icon(
                                         Icons.recommend_rounded,
-                                        color: AppColors().blackColor91Percent,
+                                        color: AppColors().whiteColor,
                                         size: 6.h,
                                       ),
                                     ),
@@ -148,7 +148,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                       text: "Favoritos",
                                       icon: Icon(
                                         Icons.favorite,
-                                        color: AppColors().blackColor91Percent,
+                                        color: AppColors().whiteColor,
                                         size: 6.h,
                                       ),
                                     ),
@@ -164,7 +164,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                       text: "Resolvidos",
                                       icon: Icon(
                                         Icons.done,
-                                        color: AppColors().blackColor91Percent,
+                                        color: AppColors().whiteColor,
                                         size: 6.h,
                                       ),
                                     ),
@@ -172,7 +172,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                       text: "Adicionar",
                                       icon: Icon(
                                         Icons.add_circle,
-                                        color: AppColors().blackColor91Percent,
+                                        color: AppColors().whiteColor,
                                         size: 6.h,
                                       ),
                                     ),
@@ -180,7 +180,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                       text: "Pontuação",
                                       icon: Icon(
                                         Icons.sports_score_sharp,
-                                        color: AppColors().blackColor91Percent,
+                                        color: AppColors().whiteColor,
                                         size: 6.h,
                                       ),
                                     ),

@@ -21,9 +21,8 @@ class AppColors {
   final Color redColor = const Color(0XFFFF0000);
   final Color blueColor = const Color(0XFF0000FE);
   final Color navigationBarColor = const Color(0XFF0A0F35);
-  final Color statusBarColor = const Color(0XFF0A0F37);
   final Color blackColor91Percent = const Color(0XFF919191);
-  final Color backgroundStandardColor = const Color(0XFF0D1418);
+  final Color standardColor = const Color(0XFF788990);
   final Color grayColor = const Color(0XFFE1E1E1);
   final Color brightBlueColor = const Color(0XFF0079D9);
   final Color darkBlueColor = const Color(0XFF004373);

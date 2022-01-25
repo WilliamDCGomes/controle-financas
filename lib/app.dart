@@ -1,3 +1,4 @@
+import 'package:financas_controle/2-app/views/stylePages/appColors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -10,8 +11,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Color(0XFF0A0F37),
-      systemNavigationBarColor: Color(0XFF0A0F35),
+      statusBarColor: AppColors().standardColor,
+      systemNavigationBarColor: AppColors().standardColor,
     ));
 
     return ResponsiveSizer(builder: (context, orientation, screentype) {

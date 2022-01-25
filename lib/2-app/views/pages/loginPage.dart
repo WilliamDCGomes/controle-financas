@@ -30,12 +30,12 @@ class _LoginPageState extends State<LoginPage> {
             FocusScope.of(context).requestFocus(FocusNode());
           },
           child: Container(
-            color: AppColors().backgroundStandardColor,
+            color: AppColors().standardColor,
             child: Stack(
               children: [
                 Padding(
                   padding: EdgeInsets.only(
-                    top: PhoneTablet().isPhone(context) ? 2.h : 0,
+                    top: PhoneTablet().isPhone(context) ? 7.h : 5.h,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -57,11 +57,11 @@ class _LoginPageState extends State<LoginPage> {
                       "Login",
                       textColor: AppColors().whiteColor,
                     ),
-                    backgroundColor: AppColors().backgroundStandardColor,
+                    backgroundColor: AppColors().standardColor,
                   ),
                   body: SingleChildScrollView(
                     child: Padding(
-                      padding: EdgeInsets.only(top: 15.h),
+                      padding: EdgeInsets.only(top: 25.h),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
@@ -160,12 +160,6 @@ class _LoginPageState extends State<LoginPage> {
                         ],
                       ),
                     ),
-                  ),
-                  floatingActionButton: FloatingActionButton(
-                    onPressed: () {
-
-                    },
-
                   ),
                 ),
               ],

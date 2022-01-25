@@ -25,7 +25,7 @@ class _ForgetPasswordPopupState extends State<ForgetPasswordPopup> {
     controller = Get.put(ForgetPasswordPopupController());
 
     return Dialog(
-      backgroundColor: AppColors().backgroundStandardColor,
+      backgroundColor: AppColors().standardColor,
       insetPadding: EdgeInsets.all(15),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(2.5.h),
