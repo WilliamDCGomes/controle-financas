@@ -1,4 +1,5 @@
 import 'package:financas_controle/1-base/models/bill.dart';
+import 'package:financas_controle/2-app/helpers/dateFormatToBrazil.dart';
 import 'package:financas_controle/2-app/views/stylePages/appColors.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -52,26 +53,27 @@ class BillCardWidget extends StatelessWidget {
                       SizedBox(
                         width: 66.w,
                         child: TextWidget(
-                          billItem.title ?? "",
-                          maxLines: 1,
+                          "Cód. ${billItem.billCode}",
                           textColor: AppColors().whiteColor,
                           fontWeight: FontWeight.bold,
                           fontSize: 20.sp,
                           textAlign: TextAlign.start,
+                          maxLines: 1,
                           textOverflow: TextOverflow.ellipsis,
                         ),
                       ),
                       Icon(
-                        Icons.favorite,
-                        color: billItem.isFavorited ?
-                        AppColors().redCardColor :
+                        Icons.monetization_on,
+                        color: billItem.fixedBill ?
+                        AppColors().yellowColor :
                         AppColors().blackColor91Percent,
                         size: 8.w,
                       ),
                     ],
                   ),
                   TextWidget(
-                    "Cód. ${billItem.billCode}",
+                    billItem.billName ?? "",
+                    maxLines: 1,
                     textColor: AppColors().whiteColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 20.sp,
@@ -81,20 +83,21 @@ class BillCardWidget extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      TextWidget(
+                        "Venc.: ${DateFormatToBrazil().formatDate(billItem.billDate)}",
+                        maxLines: 1,
+                        textColor: AppColors().whiteColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18.sp,
+                        textAlign: TextAlign.start,
+                        textOverflow: TextOverflow.ellipsis,
+                      ),
                       SizedBox(
-                        width: 42.w,
-                        child: TextWidget(
-                          billItem.authorsComment ?? "",
-                          maxLines: 1,
-                          textColor: AppColors().whiteColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18.sp,
-                          textAlign: TextAlign.start,
-                          textOverflow: TextOverflow.ellipsis,
-                        ),
+                        width: 2.w,
                       ),
                       TextWidget(
-                        "Dificuldade: ${billItem.difficultyLevel}",
+                        "Valor: ${billItem.billValue.toString().replaceAll('.', ',')}",
+                        maxLines: 1,
                         textColor: AppColors().whiteColor,
                         fontWeight: FontWeight.bold,
                         fontSize: 18.sp,

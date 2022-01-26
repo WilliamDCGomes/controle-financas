@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'dart:ui';
 import 'package:financas_controle/1-base/models/bill.dart';
+import 'package:financas_controle/2-app/enums/enums.dart';
 import 'package:get/get.dart';
 
 class MainMenuController extends GetxController {
@@ -9,13 +10,14 @@ class MainMenuController extends GetxController {
   late RxBool hasPicture;
   late RxString welcomePhrase;
   late final List<Color> colors;
-  late final List<Bill> favoriteExercises;
-  late final List<Bill> recommendedExercise;
-  late final List<Bill> lastAddedExercises;
+  late final List<Bill> fixedBills;
+  late final List<Bill> periodicExpenses;
+  late final List<Bill> billsAlreadyPaid;
+  late final List<Bill> notPaidYet;
 
   MainMenuController(){
     _startVariables();
-    _getExercises();
+    _getFixedBills();
     _getNameUser();
     _getNameInitials();
     _getWelcomePhrase();
@@ -24,139 +26,178 @@ class MainMenuController extends GetxController {
   _startVariables(){
     hasPicture = false.obs;
     colors = [Color(0XFF484592), Color(0XFF619793)];
-    favoriteExercises = <Bill>[];
-    recommendedExercise = <Bill>[];
-    lastAddedExercises = <Bill>[];
+    fixedBills = <Bill>[];
+    periodicExpenses = <Bill>[];
+    billsAlreadyPaid = <Bill>[];
+    notPaidYet = <Bill>[];
   }
 
-  _getExercises(){
+  _getFixedBills(){
     for(int i = 0; i < 5; i++){
       Bill bill = Bill();
-      int difficulty = Random().nextInt(5) + 1;
       switch(i){
         case 0:
           bill.billCode = 1;
-          bill.title = "Desenhando Labirintos";
-          bill.necessaryKnowledge = "C#;Ruby;Programação Orientada a Objetos;Lógica de Programação;Programação Dinâmica";
-          bill.description = "A entrada consiste em diversas casos de teste. A primeira linha de cada caso contém dois inteiros C (1 ≤ C ≤ 15) e E (1 ≤ E ≤ 225), que indicam a quantidade de cidades e estradas. As E linhas seguintes contém três inteiros C1, C2 e T, que identificam o tempo médio T de deslocamento entre as cidades C1, C2. Por fim, um inteiro D identifica a cidade em que Valentina se encontra no momento. Uma linha com 0 0 finaliza a entrada.";
-          bill.authorsComment = "Gabriel Jesus da Fonseca da Cruz";
+          bill.billName = "Faculdade";
+          bill.statusBill = StatusBill.alreadyPaid;
+          bill.billValue = 743.59;
           break;
         case 1:
           bill.billCode = 2;
-          bill.title = "Programação de Viagem";
-          bill.necessaryKnowledge = "Grafos;Lógica de Programação;Programação Dinâmica";
-          bill.description = "A entrada consiste em diversas casos de teste. A primeira linha de cada caso contém dois inteiros C (1 ≤ C ≤ 15) e E (1 ≤ E ≤ 225), que indicam a quantidade de cidades e estradas. As E linhas seguintes contém três inteiros C1, C2 e T, que identificam o tempo médio T de deslocamento entre as cidades C1, C2. Por fim, um inteiro D identifica a cidade em que Valentina se encontra no momento. Uma linha com 0 0 finaliza a entrada.";
-          bill.authorsComment = "William Douglas";
+          bill.billName = "Pós";
+          bill.statusBill = StatusBill.late;
+          bill.billValue = 360;
           break;
         case 2:
           bill.billCode = 3;
-          bill.title = "Percurso em Árvore por Nível";
-          bill.necessaryKnowledge = "Html;CSS;Lógica de Programação;Programação Dinâmica";
-          bill.description = "A entrada consiste em diversas casos de teste. A primeira linha de cada caso contém dois inteiros C (1 ≤ C ≤ 15) e E (1 ≤ E ≤ 225), que indicam a quantidade de cidades e estradas. As E linhas seguintes contém três inteiros C1, C2 e T, que identificam o tempo médio T de deslocamento entre as cidades C1, C2. Por fim, um inteiro D identifica a cidade em que Valentina se encontra no momento. Uma linha com 0 0 finaliza a entrada.";
-          bill.authorsComment = "Bárbara Ribeiro";
+          bill.billName = "LpNet";
+          bill.statusBill = StatusBill.deadlineEnding;
+          bill.billValue = 110;
           break;
         case 3:
           bill.billCode = 4;
-          bill.title = "Aproveite a Oferta";
-          bill.necessaryKnowledge = "C++;Java;Lógica de Programação;Programação Dinâmica";
-          bill.description = "A entrada consiste em diversas casos de teste. A primeira linha de cada caso contém dois inteiros C (1 ≤ C ≤ 15) e E (1 ≤ E ≤ 225), que indicam a quantidade de cidades e estradas. As E linhas seguintes contém três inteiros C1, C2 e T, que identificam o tempo médio T de deslocamento entre as cidades C1, C2. Por fim, um inteiro D identifica a cidade em que Valentina se encontra no momento. Uma linha com 0 0 finaliza a entrada.";
-          bill.authorsComment = "Carol Molina";
+          bill.billName = "Netflix";
+          bill.statusBill = StatusBill.alreadyPaid;
+          bill.billValue = 25.9;
           break;
         case 4:
           bill.billCode = 5;
-          bill.title = "Diamantes e Areia";
-          bill.necessaryKnowledge = "Lógica de Programação;Programação Dinâmica";
-          bill.description = "A entrada consiste em diversas casos de teste. A primeira linha de cada caso contém dois inteiros C (1 ≤ C ≤ 15) e E (1 ≤ E ≤ 225), que indicam a quantidade de cidades e estradas. As E linhas seguintes contém três inteiros C1, C2 e T, que identificam o tempo médio T de deslocamento entre as cidades C1, C2. Por fim, um inteiro D identifica a cidade em que Valentina se encontra no momento. Uma linha com 0 0 finaliza a entrada.";
-          bill.authorsComment = "Thomas Richard";
+          bill.billName = "Amazon";
+          bill.statusBill = StatusBill.late;
+          bill.billValue = 9.9;
           break;
       }
-      bill.difficultyLevel = difficulty;
-      bill.siteOrigem = "www.urionlinejudge.com.br";
-      bill.isFavorited = true;
-      favoriteExercises.add(bill);
+      bill.billDate = DateTime.now().add(Duration(days: Random().nextInt(50) - 20));
+      bill.fixedBill = true;
+      fixedBills.add(bill);
     }
+
     for(int i = 0; i < 5; i++){
       Bill bill = Bill();
-      int difficulty = Random().nextInt(5) + 1;
       switch(i){
         case 0:
           bill.billCode = 6;
-          bill.title = "Programação de Viagem";
-          bill.necessaryKnowledge = "Grafos;Lógica de Programação;Programação Dinâmica";
-          bill.description = "A entrada consiste em diversas casos de teste. A primeira linha de cada caso contém dois inteiros C (1 ≤ C ≤ 15) e E (1 ≤ E ≤ 225), que indicam a quantidade de cidades e estradas. As E linhas seguintes contém três inteiros C1, C2 e T, que identificam o tempo médio T de deslocamento entre as cidades C1, C2. Por fim, um inteiro D identifica a cidade em que Valentina se encontra no momento. Uma linha com 0 0 finaliza a entrada.";
-          bill.authorsComment = "William Douglas";
+          bill.billName = "Will Bank";
+          bill.statusBill = StatusBill.late;
+          bill.billValue = 54.82;
           break;
         case 1:
           bill.billCode = 7;
-          bill.title = "Percurso em Árvore por Nível";
-          bill.necessaryKnowledge = "Html;CSS;Lógica de Programação;Programação Dinâmica";
-          bill.description = "A entrada consiste em diversas casos de teste. A primeira linha de cada caso contém dois inteiros C (1 ≤ C ≤ 15) e E (1 ≤ E ≤ 225), que indicam a quantidade de cidades e estradas. As E linhas seguintes contém três inteiros C1, C2 e T, que identificam o tempo médio T de deslocamento entre as cidades C1, C2. Por fim, um inteiro D identifica a cidade em que Valentina se encontra no momento. Uma linha com 0 0 finaliza a entrada.";
-          bill.authorsComment = "Bárbara Ribeiro";
+          bill.fixedBill = true;
+          bill.billName = "Nubank";
+          bill.statusBill = StatusBill.deadlineEnding;
+          bill.billValue = 274.27;
           break;
         case 2:
           bill.billCode = 8;
-          bill.title = "Aproveite a Oferta";
-          bill.necessaryKnowledge = "C++;Java;Lógica de Programação;Programação Dinâmica";
-          bill.description = "A entrada consiste em diversas casos de teste. A primeira linha de cada caso contém dois inteiros C (1 ≤ C ≤ 15) e E (1 ≤ E ≤ 225), que indicam a quantidade de cidades e estradas. As E linhas seguintes contém três inteiros C1, C2 e T, que identificam o tempo médio T de deslocamento entre as cidades C1, C2. Por fim, um inteiro D identifica a cidade em que Valentina se encontra no momento. Uma linha com 0 0 finaliza a entrada.";
-          bill.authorsComment = "Carol Molina";
+          bill.fixedBill = true;
+          bill.billName = "Credicard";
+          bill.billValue = 254.47;
           break;
         case 3:
           bill.billCode = 9;
-          bill.title = "Diamantes e Areia";
-          bill.necessaryKnowledge = "Lógica de Programação;Programação Dinâmica";
-          bill.description = "A entrada consiste em diversas casos de teste. A primeira linha de cada caso contém dois inteiros C (1 ≤ C ≤ 15) e E (1 ≤ E ≤ 225), que indicam a quantidade de cidades e estradas. As E linhas seguintes contém três inteiros C1, C2 e T, que identificam o tempo médio T de deslocamento entre as cidades C1, C2. Por fim, um inteiro D identifica a cidade em que Valentina se encontra no momento. Uma linha com 0 0 finaliza a entrada.";
-          bill.authorsComment = "Thomas Richard";
+          bill.billName = "Havan";
+          bill.statusBill = StatusBill.late;
+          bill.billValue = 307.54;
           break;
         case 4:
           bill.billCode = 10;
-          bill.title = "Programação de Viagem";
-          bill.necessaryKnowledge = "Grafos;Lógica de Programação;Programação Dinâmica";
-          bill.description = "A entrada consiste em diversas casos de teste. A primeira linha de cada caso contém dois inteiros C (1 ≤ C ≤ 15) e E (1 ≤ E ≤ 225), que indicam a quantidade de cidades e estradas. As E linhas seguintes contém três inteiros C1, C2 e T, que identificam o tempo médio T de deslocamento entre as cidades C1, C2. Por fim, um inteiro D identifica a cidade em que Valentina se encontra no momento. Uma linha com 0 0 finaliza a entrada.";
-          bill.authorsComment = "William Douglas";
+          bill.billName = "Curso de Inglês";
+          bill.statusBill = StatusBill.deadlineEnding;
+          bill.billValue = 206;
           break;
       }
-      bill.difficultyLevel = difficulty;
-      bill.siteOrigem = "www.urionlinejudge.com.br";
-      bill.isFavorited = false;
-      recommendedExercise.add(bill);
+      bill.billDate = DateTime.now().add(Duration(days: Random().nextInt(50) - 20));
+      periodicExpenses.add(bill);
     }
-    for(int i = 0; i < 4; i++){
+
+    for(int i = 0; i < 5; i++){
       Bill bill = Bill();
-      int difficulty = Random().nextInt(5) + 1;
       switch(i){
         case 0:
-          bill.billCode = 11;
-          bill.title = "Percurso em Árvore por Nível";
-          bill.necessaryKnowledge = "Html;CSS;Lógica de Programação;Programação Dinâmica";
-          bill.description = "A entrada consiste em diversas casos de teste. A primeira linha de cada caso contém dois inteiros C (1 ≤ C ≤ 15) e E (1 ≤ E ≤ 225), que indicam a quantidade de cidades e estradas. As E linhas seguintes contém três inteiros C1, C2 e T, que identificam o tempo médio T de deslocamento entre as cidades C1, C2. Por fim, um inteiro D identifica a cidade em que Valentina se encontra no momento. Uma linha com 0 0 finaliza a entrada.";
-          bill.authorsComment = "Bárbara Ribeiro";
+          bill.billCode = 1;
+          bill.fixedBill = true;
+          bill.billName = "Faculdade";
+          bill.billValue = 743.59;
           break;
         case 1:
-          bill.billCode = 12;
-          bill.title = "Aproveite a Oferta";
-          bill.necessaryKnowledge = "C++;Java;Lógica de Programação;Programação Dinâmica";
-          bill.description = "A entrada consiste em diversas casos de teste. A primeira linha de cada caso contém dois inteiros C (1 ≤ C ≤ 15) e E (1 ≤ E ≤ 225), que indicam a quantidade de cidades e estradas. As E linhas seguintes contém três inteiros C1, C2 e T, que identificam o tempo médio T de deslocamento entre as cidades C1, C2. Por fim, um inteiro D identifica a cidade em que Valentina se encontra no momento. Uma linha com 0 0 finaliza a entrada.";
-          bill.authorsComment = "Carol Molina";
+          bill.billCode = 4;
+          bill.fixedBill = true;
+          bill.billName = "Netflix";
+          bill.billValue = 25.9;
           break;
         case 2:
-          bill.billCode = 13;
-          bill.title = "Diamantes e Areia";
-          bill.necessaryKnowledge = "Lógica de Programação;Programação Dinâmica";
-          bill.description = "A entrada consiste em diversas casos de teste. A primeira linha de cada caso contém dois inteiros C (1 ≤ C ≤ 15) e E (1 ≤ E ≤ 225), que indicam a quantidade de cidades e estradas. As E linhas seguintes contém três inteiros C1, C2 e T, que identificam o tempo médio T de deslocamento entre as cidades C1, C2. Por fim, um inteiro D identifica a cidade em que Valentina se encontra no momento. Uma linha com 0 0 finaliza a entrada.";
-          bill.authorsComment = "Thomas Richard";
+          bill.billCode = 8;
+          bill.billName = "Credicard";
+          bill.billValue = 254.47;
           break;
         case 3:
-          bill.billCode = 14;
-          bill.title = "Programação de Viagem";
-          bill.necessaryKnowledge = "Grafos;Lógica de Programação;Programação Dinâmica";
-          bill.description = "A entrada consiste em diversas casos de teste. A primeira linha de cada caso contém dois inteiros C (1 ≤ C ≤ 15) e E (1 ≤ E ≤ 225), que indicam a quantidade de cidades e estradas. As E linhas seguintes contém três inteiros C1, C2 e T, que identificam o tempo médio T de deslocamento entre as cidades C1, C2. Por fim, um inteiro D identifica a cidade em que Valentina se encontra no momento. Uma linha com 0 0 finaliza a entrada.";
-          bill.authorsComment = "William Douglas";
+          bill.billCode = 11;
+          bill.billName = "Meu Vivo";
+          bill.billValue = 42;
+          break;
+        case 4:
+          bill.billCode = 12;
+          bill.billName = "Spotify";
+          bill.billValue = 19.90;
           break;
       }
-      bill.difficultyLevel = difficulty;
-      bill.siteOrigem = "www.urionlinejudge.com.br";
-      bill.isFavorited = false;
-      lastAddedExercises.add(bill);
+      bill.statusBill = StatusBill.alreadyPaid;
+      bill.billDate = DateTime.now().add(Duration(days: Random().nextInt(50) - 20));
+      billsAlreadyPaid.add(bill);
+    }
+
+    Bill investmentBill = Bill();
+    investmentBill.billCode = 14;
+    investmentBill.billName = "Canadá";
+    investmentBill.statusBill = StatusBill.investment;
+    investmentBill.billValue = 200;
+    investmentBill.billDate = DateTime.now().add(Duration(days: Random().nextInt(50) - 20));
+
+    Bill futureBill = Bill();
+    futureBill.billCode = 15;
+    futureBill.billName = "Nutricionista";
+    futureBill.statusBill = StatusBill.futureBill;
+    futureBill.billValue = 400;
+    futureBill.billDate = DateTime.now().add(Duration(days: Random().nextInt(50) - 20));
+    notPaidYet.add(investmentBill);
+    notPaidYet.add(futureBill);
+
+    for(int i = 0; i < 5; i++){
+      Bill bill = Bill();
+      switch(i){
+        case 0:
+          bill.billCode = 2;
+          bill.billName = "Pós";
+          bill.fixedBill = true;
+          bill.billValue = 360;
+          break;
+        case 1:
+          bill.billCode = 5;
+          bill.billName = "Amazon";
+          bill.fixedBill = true;
+          bill.billValue = 9.9;
+          break;
+        case 2:
+          bill.billCode = 6;
+          bill.billName = "Will Bank";
+          bill.billValue = 54.82;
+          break;
+        case 3:
+          bill.billCode = 9;
+          bill.billName = "Havan";
+          bill.billValue = 307.54;
+          break;
+        case 4:
+          bill.billCode = 13;
+          bill.billName = "Academia";
+          bill.fixedBill = true;
+          bill.billValue = 99;
+          break;
+      }
+      bill.statusBill = StatusBill.late;
+      bill.billDate = DateTime.now().add(Duration(days: Random().nextInt(50) - 20));
+      notPaidYet.add(bill);
     }
   }
 

@@ -190,7 +190,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
                               Padding(
                                 padding: EdgeInsets.only(top: 3.h),
                                 child: TextWidget(
-                                  "Exercícios marcados como favoritos",
+                                  "Que ainda não foram pagos",
                                   textColor: AppColors().whiteColor,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20.sp,
@@ -209,12 +209,12 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                   width: 100.w,
                                   child: ListView.builder(
                                     scrollDirection: Axis.horizontal,
-                                    itemCount: controller.favoriteExercises.length,
+                                    itemCount: controller.notPaidYet.length,
                                     itemBuilder: (context, index){
                                       return Padding(
                                         padding: EdgeInsets.only(right: 2.w),
                                         child: BillCardWidget(
-                                          billItem: controller.favoriteExercises[index],
+                                          billItem: controller.notPaidYet[index],
                                         ),
                                       );
                                     },
@@ -224,7 +224,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
                               Padding(
                                 padding: EdgeInsets.only(top: 3.h),
                                 child: TextWidget(
-                                  "Recomendados para você",
+                                  "Os que já foram pagos",
                                   textColor: AppColors().whiteColor,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20.sp,
@@ -243,12 +243,12 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                   width: 100.w,
                                   child: ListView.builder(
                                     scrollDirection: Axis.horizontal,
-                                    itemCount: controller.recommendedExercise.length,
+                                    itemCount: controller.billsAlreadyPaid.length,
                                     itemBuilder: (context, index){
                                       return Padding(
                                         padding: EdgeInsets.only(right: 2.w),
                                         child: BillCardWidget(
-                                          billItem: controller.recommendedExercise[index],
+                                          billItem: controller.billsAlreadyPaid[index],
                                         ),
                                       );
                                     },
@@ -258,7 +258,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
                               Padding(
                                 padding: EdgeInsets.only(top: 3.h),
                                 child: TextWidget(
-                                  "Últimos exercícios adicionados",
+                                  "Contas fixas",
                                   textColor: AppColors().whiteColor,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20.sp,
@@ -277,12 +277,46 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                   width: 100.w,
                                   child: ListView.builder(
                                     scrollDirection: Axis.horizontal,
-                                    itemCount: controller.lastAddedExercises.length,
+                                    itemCount: controller.fixedBills.length,
                                     itemBuilder: (context, index){
                                       return Padding(
                                         padding: EdgeInsets.only(right: 2.w),
                                         child: BillCardWidget(
-                                          billItem: controller.lastAddedExercises[index],
+                                          billItem: controller.fixedBills[index],
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 3.h),
+                                child: TextWidget(
+                                  "Contas Periódicas",
+                                  textColor: AppColors().whiteColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20.sp,
+                                  textAlign: TextAlign.start,
+                                ),
+                              ),
+                              Container(
+                                height: 1,
+                                color: AppColors().whiteColor,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 1.5.h),
+                                child: SizedBox(
+                                  height: PhoneTablet().isPhone(context) ?
+                                  20.h : 22.h,
+                                  width: 100.w,
+                                  child: ListView.builder(
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: controller.periodicExpenses.length,
+                                    itemBuilder: (context, index){
+                                      return Padding(
+                                        padding: EdgeInsets.only(right: 2.w),
+                                        child: BillCardWidget(
+                                          billItem: controller.periodicExpenses[index],
                                         ),
                                       );
                                     },

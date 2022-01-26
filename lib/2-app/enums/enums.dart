@@ -3,3 +3,10 @@ enum Flavor {
   HMLG,
   PROD,
 }
+enum StatusBill {
+  alreadyPaid,
+  deadlineEnding,
+  late,
+  investment,
+  futureBill,
+}

@@ -1,3 +1,4 @@
+import 'package:financas_controle/2-app/enums/enums.dart';
 import 'package:financas_controle/2-app/helpers/paths.dart';
 import 'package:financas_controle/2-app/views/stylePages/appColors.dart';
 import 'package:uuid/uuid.dart';
@@ -5,48 +6,54 @@ import 'package:uuid/uuid.dart';
 class Bill {
   //#region Attributes
   late String id;
+  String? billName;
+  late bool fixedBill;
+  bool? isInvestment;
+  bool? isAFutureBill;
   int? billCode;
-  int? difficultyLevel;
-  String? title;
-  String? siteOrigem;
-  String? necessaryKnowledge;
-  String? description;
-  String? authorsComment;
-  late bool isFavorited;
+  int? plots;
+  int? formPayment;
+  double? billValue;
+  double? muchPaid;
+  double? amountWantAchieve;
+  double? amountAlreadyHave;
+  DateTime? billDate;
+  DateTime? whenPaid;
+  StatusBill? statusBill;
   //#endregion
 
   //#region Constructor
   Bill() {
     id = Uuid().v4();
-    isFavorited = false;
+    fixedBill = false;
   }
   //#endregion
 
   //#region Encapsulation
   get getColor {
-    switch (difficultyLevel) {
-      case 2:
-        return AppColors().blueCardColor;
-      case 3:
-        return AppColors().purpleCardColor;
-      case 4:
+    switch (statusBill) {
+      case StatusBill.deadlineEnding:
         return AppColors().orangeCardColor;
-      case 5:
+      case StatusBill.late:
         return AppColors().redCardColor;
+      case StatusBill.investment:
+        return AppColors().blueCardColor;
+      case StatusBill.futureBill:
+        return AppColors().purpleCardColor;
       default:
         return AppColors().greenCardColor;
     }
   }
 
   get getImagebackground {
-    switch (difficultyLevel) {
-      case 2:
+    switch (statusBill) {
+      case StatusBill.deadlineEnding:
         return "${Paths().imagesPath}postBeginnerLevel.png";
-      case 3:
+      case StatusBill.late:
         return "${Paths().imagesPath}intermediateLevel.png";
-      case 4:
+      case StatusBill.investment:
         return "${Paths().imagesPath}postIntermediateLevel.png";
-      case 5:
+      case StatusBill.futureBill:
         return "${Paths().imagesPath}hardLevel.png";
       default:
         return "${Paths().imagesPath}beginnerLevel.png";
@@ -54,22 +61,22 @@ class Bill {
   }
 
   get opacityValue {
-    switch (difficultyLevel) {
-      case 2:
+    switch (statusBill) {
+      case StatusBill.deadlineEnding:
         return 0.5;
-      case 3:
+      case StatusBill.late:
         return 0.4;
-      case 4:
-        return 0.6;
-      case 5:
-        return 0.6;
+      case StatusBill.investment:
+        return 0.4;
+      case StatusBill.futureBill:
+        return 0.4;
       default:
         return 0.3;
     }
   }
 
   get getStarColor {
-    if (isFavorited)
+    if (fixedBill)
       return AppColors().redCardColor;
     return AppColors().whiteColor;
   }
