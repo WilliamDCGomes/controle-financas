@@ -91,7 +91,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               width: 75.w,
                               iconTextField: Icon(
                                 Icons.email,
-                                color: AppColors().blackColor91Percent,
+                                color: AppColors().whiteColor,
                               ),
                               keyboardType: TextInputType.emailAddress,
                             ),
@@ -104,7 +104,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               width: 75.w,
                               iconTextField: Icon(
                                 Icons.person_sharp,
-                                color: AppColors().blackColor91Percent,
+                                color: AppColors().whiteColor,
                               ),
                               keyboardType: TextInputType.name,
                             ),
@@ -125,7 +125,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   controller.passwordFieldEnabled.value
                                       ? Icons.visibility_off
                                       : Icons.visibility,
-                                  color: AppColors().blackColor91Percent,
+                                  color: AppColors().whiteColor,
                                 ),
                               ),
                               keyboardType: TextInputType.visiblePassword,
@@ -148,7 +148,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   controller.confirmPasswordFieldEnabled.value
                                       ? Icons.visibility_off
                                       : Icons.visibility,
-                                  color: AppColors().blackColor91Percent,
+                                  color: AppColors().whiteColor,
                                 ),
                               ),
                               keyboardType: TextInputType.visiblePassword,
@@ -163,7 +163,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               width: 75.w,
                               iconTextField: Icon(
                                 Icons.phone,
-                                color: AppColors().blackColor91Percent,
+                                color: AppColors().whiteColor,
                               ),
                               keyboardType: TextInputType.phone,
                             ),
@@ -176,7 +176,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               width: 75.w,
                               iconTextField: Icon(
                                 Icons.phone_android,
-                                color: AppColors().blackColor91Percent,
+                                color: AppColors().whiteColor,
                               ),
                               keyboardType: TextInputType.phone,
                             ),

@@ -100,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                                         controller.passwordFieldEnabled.value
                                             ? Icons.visibility_off
                                             : Icons.visibility,
-                                        color: AppColors().blackColor91Percent,
+                                        color: AppColors().whiteColor,
                                       ),
                                     ),
                                     keyboardType: TextInputType.visiblePassword,

@@ -60,20 +60,24 @@ class _ForgetPasswordPopupState extends State<ForgetPasswordPopup> {
                         height: 15.h,
                         opacity: AlwaysStoppedAnimation<double>(0.8),
                       ),
-                      Obx(() => controller.messageVisible.value ?
-                      SizedBox(
-                        height: 5.h,
-                        child: TextWidget(
-                          controller.messageStatus.value,
-                          textColor: !controller.emailSucess.value ?
-                          AppColors().redColor : AppColors().greenColor,
-                          fontSize: 2.h,
-                          fontWeight: FontWeight.bold,
+                      Padding(
+                        padding: EdgeInsets.only(top: 2.h),
+                        child: Obx(() => controller.messageVisible.value ?
+                        SizedBox(
+                          height: 5.h,
+                          child: TextWidget(
+                            controller.messageStatus.value,
+                            textColor: !controller.emailSucess.value ?
+                            AppColors().redColor : AppColors().greenColor,
+                            backgroundTextColor: Color.fromRGBO(255, 255, 255, 0.4),
+                            fontSize: 2.h,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ) :
+                        SizedBox(
+                          height: 5.h,
                         ),
-                      ) :
-                      SizedBox(
-                        height: 5.h,
-                      ),
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(top: 1.h),
@@ -89,7 +93,7 @@ class _ForgetPasswordPopupState extends State<ForgetPasswordPopup> {
                             width: 80.w,
                             iconTextField: Icon(
                               Icons.email,
-                              color: AppColors().blackColor91Percent,
+                              color: AppColors().whiteColor,
                             ),
                             keyboardType: TextInputType.emailAddress,
                           ),

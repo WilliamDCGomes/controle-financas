@@ -7,6 +7,7 @@ class TextWidget extends StatelessWidget {
   final int? maxLines;
   final double? fontSize;
   final Color? textColor;
+  final Color? backgroundTextColor;
   final TextAlign? textAlign;
   final FontWeight? fontWeight;
   final TextOverflow? textOverflow;
@@ -18,6 +19,7 @@ class TextWidget extends StatelessWidget {
         Key? key,
         this.maxLines,
         this.textColor,
+        this.backgroundTextColor,
         this.textAlign,
         this.fontSize,
         this.fontWeight,
@@ -34,6 +36,7 @@ class TextWidget extends StatelessWidget {
       overflow: textOverflow,
       style: TextStyle(
         color: textColor ?? AppColors().whiteColor,
+        backgroundColor: backgroundTextColor,
         fontSize: fontSize ?? (Platform.isAndroid ? 20 : 35),
         fontWeight: fontWeight ?? FontWeight.normal,
         decoration: textDecoration,
