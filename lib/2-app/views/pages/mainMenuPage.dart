@@ -97,7 +97,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               Container(
-                                height: 25.h,
+                                height: 20.h,
                                 width: 80.w,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(2.5.h),
@@ -110,14 +110,50 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                 child: Padding(
                                   padding: EdgeInsets.all(1.h),
                                   child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     crossAxisAlignment: CrossAxisAlignment.stretch,
                                     children: [
-                                      TextWidget(
-                                        "Último exercício feito",
-                                        textColor: AppColors().whiteColor,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 22.sp,
-                                        textAlign: TextAlign.start,
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          TextWidget(
+                                            "Contas a Pagar: ${controller.billToPay.toString().replaceAll('.', ',')}",
+                                            textColor: AppColors().whiteColor,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20.sp,
+                                            textAlign: TextAlign.start,
+                                            maxLines: 1,
+                                            textOverflow: TextOverflow.ellipsis,
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          TextWidget(
+                                            "Contas Pagas: ${controller.billPaid.toString().replaceAll('.', ',')}",
+                                            textColor: AppColors().whiteColor,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20.sp,
+                                            textAlign: TextAlign.start,
+                                            maxLines: 1,
+                                            textOverflow: TextOverflow.ellipsis,
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          TextWidget(
+                                            "Dinheiro Restante: ${controller.amountYouHave.toString().replaceAll('.', ',')}",
+                                            textColor: AppColors().whiteColor,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20.sp,
+                                            textAlign: TextAlign.start,
+                                            maxLines: 1,
+                                            textOverflow: TextOverflow.ellipsis,
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
@@ -129,25 +165,25 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     MenuOptionsWidget(
-                                      text: "Exercícios",
+                                      text: "Contas",
                                       icon: Icon(
-                                        Icons.code_off_sharp,
+                                        Icons.account_balance,
                                         color: AppColors().whiteColor,
                                         size: 6.h,
                                       ),
                                     ),
                                     MenuOptionsWidget(
-                                      text: "Recomendados",
+                                      text: "Para pagar",
                                       icon: Icon(
-                                        Icons.recommend_rounded,
+                                        Icons.account_balance_wallet,
                                         color: AppColors().whiteColor,
                                         size: 6.h,
                                       ),
                                     ),
                                     MenuOptionsWidget(
-                                      text: "Favoritos",
+                                      text: "Pagos",
                                       icon: Icon(
-                                        Icons.favorite,
+                                        Icons.done,
                                         color: AppColors().whiteColor,
                                         size: 6.h,
                                       ),
@@ -161,9 +197,17 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     MenuOptionsWidget(
-                                      text: "Resolvidos",
+                                      text: "Investimento",
                                       icon: Icon(
-                                        Icons.done,
+                                        Icons.auto_graph,
+                                        color: AppColors().whiteColor,
+                                        size: 6.h,
+                                      ),
+                                    ),
+                                    MenuOptionsWidget(
+                                      text: "Histórico",
+                                      icon: Icon(
+                                        Icons.history,
                                         color: AppColors().whiteColor,
                                         size: 6.h,
                                       ),
@@ -172,14 +216,6 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                       text: "Adicionar",
                                       icon: Icon(
                                         Icons.add_circle,
-                                        color: AppColors().whiteColor,
-                                        size: 6.h,
-                                      ),
-                                    ),
-                                    MenuOptionsWidget(
-                                      text: "Pontuação",
-                                      icon: Icon(
-                                        Icons.sports_score_sharp,
                                         color: AppColors().whiteColor,
                                         size: 6.h,
                                       ),

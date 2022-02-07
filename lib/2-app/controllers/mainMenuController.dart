@@ -8,6 +8,9 @@ class MainMenuController extends GetxController {
   late String nameUser;
   late String nameInitials;
   late RxBool hasPicture;
+  late RxDouble billToPay;
+  late RxDouble billPaid;
+  late RxDouble amountYouHave;
   late RxString welcomePhrase;
   late final List<Color> colors;
   late final List<Bill> fixedBills;
@@ -25,6 +28,9 @@ class MainMenuController extends GetxController {
 
   _startVariables(){
     hasPicture = false.obs;
+    billToPay = 0.0.obs;
+    billPaid = 0.0.obs;
+    amountYouHave = 0.0.obs;
     colors = [Color(0XFF484592), Color(0XFF619793)];
     fixedBills = <Bill>[];
     periodicExpenses = <Bill>[];
@@ -92,7 +98,7 @@ class MainMenuController extends GetxController {
           bill.billCode = 8;
           bill.fixedBill = true;
           bill.billName = "Credicard";
-          bill.billValue = 254.47;
+          bill.billValue = 25004.47;
           break;
         case 3:
           bill.billCode = 9;
@@ -129,7 +135,7 @@ class MainMenuController extends GetxController {
         case 2:
           bill.billCode = 8;
           bill.billName = "Credicard";
-          bill.billValue = 254.47;
+          bill.billValue = 25004.47;
           break;
         case 3:
           bill.billCode = 11;
