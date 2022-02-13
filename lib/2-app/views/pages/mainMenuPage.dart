@@ -249,8 +249,12 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                     itemBuilder: (context, index){
                                       return Padding(
                                         padding: EdgeInsets.only(right: 2.w),
-                                        child: BillCardWidget(
-                                          billItem: controller.notPaidYet[index],
+                                        child: Hero(
+                                          tag: controller.notPaidYet[index].id,
+                                          child: BillCardWidget(
+                                            billItem: controller.notPaidYet[index],
+                                            onPressed: () => controller.openBill(controller.notPaidYet[index]),
+                                          ),
                                         ),
                                       );
                                     },
@@ -283,8 +287,12 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                     itemBuilder: (context, index){
                                       return Padding(
                                         padding: EdgeInsets.only(right: 2.w),
-                                        child: BillCardWidget(
-                                          billItem: controller.billsAlreadyPaid[index],
+                                        child: Hero(
+                                          tag: controller.billsAlreadyPaid[index].id,
+                                          child: BillCardWidget(
+                                            billItem: controller.billsAlreadyPaid[index],
+                                            onPressed: () => controller.openBill(controller.billsAlreadyPaid[index]),
+                                          ),
                                         ),
                                       );
                                     },
@@ -317,8 +325,12 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                     itemBuilder: (context, index){
                                       return Padding(
                                         padding: EdgeInsets.only(right: 2.w),
-                                        child: BillCardWidget(
-                                          billItem: controller.fixedBills[index],
+                                        child: Hero(
+                                          tag: controller.fixedBills[index].id,
+                                          child: BillCardWidget(
+                                            billItem: controller.fixedBills[index],
+                                            onPressed: () => controller.openBill(controller.fixedBills[index]),
+                                          ),
                                         ),
                                       );
                                     },
@@ -351,8 +363,12 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                     itemBuilder: (context, index){
                                       return Padding(
                                         padding: EdgeInsets.only(right: 2.w),
-                                        child: BillCardWidget(
-                                          billItem: controller.periodicExpenses[index],
+                                        child: Hero(
+                                          tag: controller.periodicExpenses[index].id,
+                                          child: BillCardWidget(
+                                            billItem: controller.periodicExpenses[index],
+                                            onPressed: () => controller.openBill(controller.periodicExpenses[index]),
+                                          ),
                                         ),
                                       );
                                     },

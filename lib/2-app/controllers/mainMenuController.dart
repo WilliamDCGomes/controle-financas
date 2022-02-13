@@ -4,6 +4,8 @@ import 'package:financas_controle/1-base/models/bill.dart';
 import 'package:financas_controle/2-app/enums/enums.dart';
 import 'package:get/get.dart';
 
+import '../views/pages/billPage.dart';
+
 class MainMenuController extends GetxController {
   late String nameUser;
   late String nameInitials;
@@ -223,5 +225,9 @@ class MainMenuController extends GetxController {
       welcomePhrase = "Boa tarde!".obs;
     else
       welcomePhrase = "Boa noite!".obs;
+  }
+
+  openBill(Bill billToOpen){
+    Get.to(BillPage(billToOpen));
   }
 }

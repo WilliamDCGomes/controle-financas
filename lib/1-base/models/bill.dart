@@ -48,30 +48,30 @@ class Bill {
   get getImagebackground {
     switch (statusBill) {
       case StatusBill.deadlineEnding:
-        return "${Paths().imagesPath}postBeginnerLevel.png";
+        return "${Paths().imagesPath}fiveDaysToPay.jpg";
       case StatusBill.late:
-        return "${Paths().imagesPath}intermediateLevel.png";
+        return "${Paths().imagesPath}late.jpg";
       case StatusBill.investment:
-        return "${Paths().imagesPath}postIntermediateLevel.png";
+        return "${Paths().imagesPath}investment.jpg";
       case StatusBill.futureBill:
-        return "${Paths().imagesPath}hardLevel.png";
+        return "${Paths().imagesPath}futureBill.jpg";
       default:
-        return "${Paths().imagesPath}beginnerLevel.png";
+        return "${Paths().imagesPath}billPaid.jpg";
     }
   }
 
   get opacityValue {
     switch (statusBill) {
       case StatusBill.deadlineEnding:
-        return 0.5;
+        return 0.6;
       case StatusBill.late:
-        return 0.4;
+        return 0.5;
       case StatusBill.investment:
-        return 0.4;
+        return 0.5;
       case StatusBill.futureBill:
-        return 0.4;
+        return 0.5;
       default:
-        return 0.3;
+        return 0.4;
     }
   }
 
