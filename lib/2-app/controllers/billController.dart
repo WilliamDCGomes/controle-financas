@@ -1,13 +1,24 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 import '../../1-base/models/bill.dart';
-import '../enums/enums.dart';
 import '../views/stylePages/appColors.dart';
 
 class BillController extends GetxController {
   late Bill bill;
 
-  BillController(this.bill);
+  BillController(this.bill){
+    _getStatusBarColorOpen();
+  }
+
+  _getStatusBarColorOpen(){
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: bill.getColor,
+    ));
+  }
+
+  getStatusBarColorClose(){
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: AppColors().standardColor,
+    ));
+  }
 }

@@ -3,6 +3,8 @@ import 'package:financas_controle/2-app/helpers/paths.dart';
 import 'package:financas_controle/2-app/views/stylePages/appColors.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../2-app/helpers/dateFormatToBrazil.dart';
+
 class Bill {
   //#region Attributes
   late String id;
@@ -79,6 +81,10 @@ class Bill {
     if (fixedBill)
       return AppColors().redCardColor;
     return AppColors().whiteColor;
+  }
+
+  get formatedDate {
+    return DateFormatToBrazil().formatDate(billDate);
   }
   //#endregion
 }

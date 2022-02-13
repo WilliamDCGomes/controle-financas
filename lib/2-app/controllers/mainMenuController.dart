@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:financas_controle/1-base/models/bill.dart';
 import 'package:financas_controle/2-app/enums/enums.dart';
 import 'package:get/get.dart';
-
 import '../views/pages/billPage.dart';
 
 class MainMenuController extends GetxController {

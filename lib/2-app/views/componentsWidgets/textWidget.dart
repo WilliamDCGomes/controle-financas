@@ -33,7 +33,7 @@ class TextWidget extends StatelessWidget {
     return Text(
       _text,
       maxLines: maxLines,
-      overflow: textOverflow,
+      overflow: textOverflow ?? TextOverflow.ellipsis,
       style: TextStyle(
         color: textColor ?? AppColors().whiteColor,
         backgroundColor: backgroundTextColor,

@@ -6,6 +6,8 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import 'textWidget.dart';
 
 class BillCardWidget extends StatelessWidget {
+  final String? eraseFilds;
+  final double? width;
   final double? widthButton;
   final double? borderRadius;
   final FontWeight? fontWeight;
@@ -15,6 +17,8 @@ class BillCardWidget extends StatelessWidget {
 
   const BillCardWidget(
       { Key? key,
+        this.eraseFilds,
+        this.width,
         this.widthButton,
         this.borderRadius,
         this.fontWeight,
@@ -31,7 +35,7 @@ class BillCardWidget extends StatelessWidget {
         color: AppColors().transparentColor,
         child: Container(
           height: 20.h,
-          width: 80.w,
+          width: width ?? 80.w,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(borderRadius ?? 2.5.h),
             color: billItem.getColor,
@@ -57,13 +61,12 @@ class BillCardWidget extends StatelessWidget {
                         SizedBox(
                           width: 66.w,
                           child: TextWidget(
-                            "Cód. ${billItem.billCode}",
+                            eraseFilds ?? "Cód. ${billItem.billCode}",
                             textColor: AppColors().whiteColor,
                             fontWeight: FontWeight.bold,
                             fontSize: 20.sp,
                             textAlign: TextAlign.start,
                             maxLines: 1,
-                            textOverflow: TextOverflow.ellipsis,
                           ),
                         ),
                         Icon(
@@ -76,37 +79,34 @@ class BillCardWidget extends StatelessWidget {
                       ],
                     ),
                     TextWidget(
-                      billItem.billName ?? "",
+                      eraseFilds ?? (billItem.billName ?? ""),
                       maxLines: 1,
                       textColor: AppColors().whiteColor,
                       fontWeight: FontWeight.bold,
                       fontSize: 20.sp,
                       textAlign: TextAlign.start,
-                      textOverflow: TextOverflow.ellipsis,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TextWidget(
-                          "Venc.: ${DateFormatToBrazil().formatDate(billItem.billDate)}",
+                          eraseFilds ?? "Venc.: ${DateFormatToBrazil().formatDate(billItem.billDate)}",
                           maxLines: 1,
                           textColor: AppColors().whiteColor,
                           fontWeight: FontWeight.bold,
                           fontSize: 17.sp,
                           textAlign: TextAlign.start,
-                          textOverflow: TextOverflow.ellipsis,
                         ),
                         SizedBox(
                           width: 2.w,
                         ),
                         TextWidget(
-                          "Valor: ${billItem.billValue.toString().replaceAll('.', ',')}",
+                          eraseFilds ?? "Valor: ${billItem.billValue.toString().replaceAll('.', ',')}",
                           maxLines: 1,
                           textColor: AppColors().whiteColor,
                           fontWeight: FontWeight.bold,
                           fontSize: 17.sp,
                           textAlign: TextAlign.start,
-                          textOverflow: TextOverflow.ellipsis,
                         ),
                       ],
                     ),
