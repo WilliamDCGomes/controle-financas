@@ -29,4 +29,5 @@ class AppColors {
   final Color darkBlueColor = const Color(0XFF004373);
   final Color googleLogoBackgroundColor = const Color(0XFFD34836);
   final Color facebookLogoBackgroundColor = const Color(0XFF3B5998);
+  final List<Color> gradientColor = const [Color(0XFF484592), Color(0XFF619793)];
 }

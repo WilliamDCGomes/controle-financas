@@ -14,6 +14,7 @@ class Bill {
   bool? isAFutureBill;
   int? billCode;
   int? plots;
+  int? plotsPaid;
   int? formPayment;
   double? billValue;
   double? muchPaid;
@@ -83,8 +84,46 @@ class Bill {
     return AppColors().whiteColor;
   }
 
-  get formatedDate {
+  get formattedDate {
     return DateFormatToBrazil().formatDate(billDate);
+  }
+
+  get formattedWhenPaid {
+    return DateFormatToBrazil().formatDate(whenPaid);
+  }
+
+  get getFormattedValue {
+    if(billValue != null)
+      return billValue!.toStringAsFixed(2).replaceAll('.', ',');
+    return "0,00";
+  }
+
+  get getFormattedValuePaid {
+    if(muchPaid != null)
+      return muchPaid!.toStringAsFixed(2).replaceAll('.', ',');
+    return "0,00";
+  }
+
+  get getFormattedValueWantAchieve {
+    if(amountWantAchieve != null)
+      return amountWantAchieve!.toStringAsFixed(2).replaceAll('.', ',');
+    return "0,00";
+  }
+
+  get getFormattedValueAlreadyHave {
+    if(amountAlreadyHave != null)
+      return amountAlreadyHave!.toStringAsFixed(2).replaceAll('.', ',');
+    return "0,00";
+  }
+
+  get plotsRemaining {
+    if(plots != null && plotsPaid != null) {
+      int remainig = plots! - plotsPaid!;
+      if(remainig > 1)
+        return "${remainig} parcelas restantes";
+      return "1 parcela restante";
+    }
+    return "0";
   }
   //#endregion
 }

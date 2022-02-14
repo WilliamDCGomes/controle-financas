@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'dart:ui';
 import 'package:financas_controle/1-base/models/bill.dart';
 import 'package:financas_controle/2-app/enums/enums.dart';
 import 'package:get/get.dart';
@@ -13,7 +12,6 @@ class MainMenuController extends GetxController {
   late RxDouble billPaid;
   late RxDouble amountYouHave;
   late RxString welcomePhrase;
-  late final List<Color> colors;
   late final List<Bill> fixedBills;
   late final List<Bill> periodicExpenses;
   late final List<Bill> billsAlreadyPaid;
@@ -32,7 +30,6 @@ class MainMenuController extends GetxController {
     billToPay = 0.0.obs;
     billPaid = 0.0.obs;
     amountYouHave = 0.0.obs;
-    colors = [Color(0XFF484592), Color(0XFF619793)];
     fixedBills = <Bill>[];
     periodicExpenses = <Bill>[];
     billsAlreadyPaid = <Bill>[];
@@ -106,6 +103,8 @@ class MainMenuController extends GetxController {
           bill.billName = "Havan";
           bill.statusBill = StatusBill.late;
           bill.billValue = 307.54;
+          bill.plots = 10;
+          bill.plotsPaid = 4;
           break;
         case 4:
           bill.billCode = 10;
@@ -229,4 +228,18 @@ class MainMenuController extends GetxController {
   openBill(Bill billToOpen){
     Get.to(BillPage(billToOpen));
   }
+
+  //#region Encapsulation
+  get getFormattedValueBillToPay {
+    return billToPay.toStringAsFixed(2).replaceAll('.', ',');
+  }
+
+  get getFormattedValueBillPaid {
+    return billPaid.toStringAsFixed(2).replaceAll('.', ',');
+  }
+
+  get getFormattedValueAmountYouHave {
+    return amountYouHave.toStringAsFixed(2).replaceAll('.', ',');
+  }
+  //#endregion
 }

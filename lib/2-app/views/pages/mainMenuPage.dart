@@ -104,7 +104,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                   gradient: LinearGradient(
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomRight,
-                                    colors: controller.colors,
+                                    colors: AppColors().gradientColor,
                                   ),
                                 ),
                                 child: Padding(
@@ -117,7 +117,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                         mainAxisAlignment: MainAxisAlignment.start,
                                         children: [
                                           TextWidget(
-                                            "Contas a Pagar: ${controller.billToPay.toString().replaceAll('.', ',')}",
+                                            "Contas a Pagar: R\$ ${controller.getFormattedValueBillToPay}",
                                             textColor: AppColors().whiteColor,
                                             fontWeight: FontWeight.bold,
                                             fontSize: 20.sp,
@@ -130,7 +130,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                         mainAxisAlignment: MainAxisAlignment.end,
                                         children: [
                                           TextWidget(
-                                            "Contas Pagas: ${controller.billPaid.toString().replaceAll('.', ',')}",
+                                            "Contas Pagas: R\$ ${controller.getFormattedValueBillPaid}",
                                             textColor: AppColors().whiteColor,
                                             fontWeight: FontWeight.bold,
                                             fontSize: 20.sp,
@@ -143,7 +143,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                         mainAxisAlignment: MainAxisAlignment.start,
                                         children: [
                                           TextWidget(
-                                            "Dinheiro Restante: ${controller.amountYouHave.toString().replaceAll('.', ',')}",
+                                            "Dinheiro Restante: R\$ ${controller.getFormattedValueAmountYouHave}",
                                             textColor: AppColors().whiteColor,
                                             fontWeight: FontWeight.bold,
                                             fontSize: 20.sp,

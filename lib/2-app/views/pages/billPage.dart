@@ -1,11 +1,12 @@
+import 'package:financas_controle/2-app/enums/enums.dart';
 import 'package:financas_controle/2-app/views/componentsWidgets/textWidget.dart';
-import 'package:financas_controle/app.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import '../../../1-base/models/bill.dart';
 import '../../controllers/billController.dart';
 import '../componentsWidgets/billCardWidget.dart';
+import '../componentsWidgets/twoInformationsValueWidget.dart';
 import '../stylePages/appColors.dart';
 
 class BillPage extends StatefulWidget {
@@ -59,67 +60,56 @@ class _BillPageState extends State<BillPage> {
                           padding: EdgeInsets.only(left: 1.5.w, right: 1.5.w),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               TextWidget(
                                 controller.bill.billName ?? "",
-                                fontSize: 20.sp,
+                                fontSize: 21.sp,
                                 fontWeight: FontWeight.bold,
                                 textAlign: TextAlign.start,
                                 maxLines: 1,
                               ),
                               TextWidget(
-                                "Venc.: ${controller.bill.formatedDate}",
-                                fontSize: 18.sp,
+                                "Venc.: ${controller.bill.formattedDate}",
+                                fontSize: 19.sp,
                                 fontWeight: FontWeight.bold,
                                 textAlign: TextAlign.start,
                                 maxLines: 1,
                               ),
                             ],
                           ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(top: 1.5.h),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              TwoInformationsValueWidget(
+                                titleFirstValue: controller.firstTitleValueCard,
+                                firstValue: controller.firstValueCard,
+                                titleSecondValue: controller.secondTitleValueCard,
+                                secondValue: controller.secondValueCard,
+                              )
 
+                            ],
+                          ),
                         ),
                       ],
                     ),
-                    floatingActionButton: SizedBox(
-                      width: 100.w,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 3.w),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              height: 4.h,
-                              width: 20.w,
-                              decoration: BoxDecoration(
-                                color: controller.bill.getColor,
-                                image: DecorationImage(
-                                  image: AssetImage(
-                                    controller.bill.getImagebackground,
-                                  ),
-                                  fit: BoxFit.fill,
-                                  opacity: controller.bill.opacityValue,
-                                ),
-                              ),
-                            ),
-                            FloatingActionButton.extended(
-                              onPressed: () {
+                    floatingActionButton: controller.bill.statusBill != StatusBill.alreadyPaid?
+                      FloatingActionButton.extended(
+                        onPressed: () {
 
-                              },
-                              label: TextWidget(
-                                  "Marcar como pago!"
-                              ),
-                              icon: Icon(
-                                  Icons.done_outline_sharp
-                              ),
-                              backgroundColor: AppColors().greenColor,
-                              elevation: 3,
-
-                            ),
-                          ],
+                        },
+                        label: TextWidget(
+                            "Marcar como pago!"
                         ),
-                      ),
-                    ),
-
+                        icon: Icon(
+                            Icons.done_outline_sharp
+                        ),
+                        backgroundColor: AppColors().greenColor,
+                        elevation: 3,
+                      ) : null,
                   ),
                 ),
               ],
