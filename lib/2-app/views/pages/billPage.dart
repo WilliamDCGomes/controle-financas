@@ -50,51 +50,66 @@ class _BillPageState extends State<BillPage> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 18.h),
+                  padding: EdgeInsets.only(top: 12.h),
                   child: Scaffold(
                     backgroundColor: AppColors().transparentColor,
-                    body: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(left: 1.5.w, right: 1.5.w),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              TextWidget(
-                                controller.bill.billName ?? "",
-                                fontSize: 21.sp,
-                                fontWeight: FontWeight.bold,
-                                textAlign: TextAlign.start,
-                                maxLines: 1,
-                              ),
-                              TextWidget(
-                                "Venc.: ${controller.bill.formattedDate}",
-                                fontSize: 19.sp,
-                                fontWeight: FontWeight.bold,
-                                textAlign: TextAlign.start,
-                                maxLines: 1,
-                              ),
-                            ],
-                          ),
+                    body: Padding(
+                      padding: EdgeInsets.only(left: 5.w, right: 5.w),
+                      child: Card(
+                        color: AppColors().standardColor,
+                        elevation: 10,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(2.5.h),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 1.5.h),
+                        child: Padding(
+                          padding: EdgeInsets.all(2.h),
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              TwoInformationsValueWidget(
-                                titleFirstValue: controller.firstTitleValueCard,
-                                firstValue: controller.firstValueCard,
-                                titleSecondValue: controller.secondTitleValueCard,
-                                secondValue: controller.secondValueCard,
-                              )
 
+
+                              Padding(
+                                padding: EdgeInsets.only(left: 1.5.w, right: 1.5.w),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    TextWidget(
+                                      controller.bill.billName ?? "",
+                                      fontSize: 21.sp,
+                                      fontWeight: FontWeight.bold,
+                                      textAlign: TextAlign.start,
+                                      maxLines: 1,
+                                    ),
+                                    TextWidget(
+                                      "Venc.: ${controller.bill.formattedDate}",
+                                      fontSize: 19.sp,
+                                      fontWeight: FontWeight.bold,
+                                      textAlign: TextAlign.start,
+                                      maxLines: 1,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 1.5.h),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    TwoInformationsValueWidget(
+                                      titleFirstValue: controller.firstTitleValueCard,
+                                      firstValue: controller.firstValueCard,
+                                      titleSecondValue: controller.secondTitleValueCard,
+                                      secondValue: controller.secondValueCard,
+                                    )
+
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
                         ),
-                      ],
+                      ),
                     ),
                     floatingActionButton: controller.bill.statusBill != StatusBill.alreadyPaid?
                       FloatingActionButton.extended(
