@@ -30,4 +30,9 @@ class AppColors {
   final Color googleLogoBackgroundColor = const Color(0XFFD34836);
   final Color facebookLogoBackgroundColor = const Color(0XFF3B5998);
   final List<Color> gradientColor = const [Color(0XFF484592), Color(0XFF619793)];
+  final List<Color> investmentGradientColor = const [Color(0XFF67647F), Color(0XFF23305A)];
+  final List<Color> alreadyPaidGradientColor = const [Color(0XFF588F7A), Color(0XFF326153)];
+  final List<Color> futureBillGradientColor = const [Color(0XFFBC7FC3), Color(0XFF824588)];
+  final List<Color> lateGradientColor = const [Color(0XFFCC7A80), Color(0XFF972321)];
+  final List<Color> deadlineEndingGradientColor = const [Color(0XFFF4CD94), Color(0XFFC07931)];
 }

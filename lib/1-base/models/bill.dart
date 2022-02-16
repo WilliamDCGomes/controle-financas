@@ -63,6 +63,21 @@ class Bill {
     }
   }
 
+  get getGradient {
+    switch (statusBill) {
+      case StatusBill.deadlineEnding:
+        return AppColors().deadlineEndingGradientColor;
+      case StatusBill.late:
+        return AppColors().lateGradientColor;
+      case StatusBill.investment:
+        return AppColors().investmentGradientColor;
+      case StatusBill.futureBill:
+        return AppColors().futureBillGradientColor;
+      default:
+        return AppColors().alreadyPaidGradientColor;
+    }
+  }
+
   get opacityValue {
     switch (statusBill) {
       case StatusBill.deadlineEnding:

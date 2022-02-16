@@ -66,33 +66,31 @@ class _BillPageState extends State<BillPage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-
-
                               Padding(
-                                padding: EdgeInsets.only(left: 1.5.w, right: 1.5.w),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    TextWidget(
-                                      controller.bill.billName ?? "",
-                                      fontSize: 21.sp,
-                                      fontWeight: FontWeight.bold,
-                                      textAlign: TextAlign.start,
-                                      maxLines: 1,
-                                    ),
-                                    TextWidget(
-                                      "Venc.: ${controller.bill.formattedDate}",
-                                      fontSize: 19.sp,
-                                      fontWeight: FontWeight.bold,
-                                      textAlign: TextAlign.start,
-                                      maxLines: 1,
-                                    ),
-                                  ],
+                                padding: EdgeInsets.only(right: 1.5.w),
+                                child: Container(
+                                  width: 90.w - 4.h,
+                                  child: TextWidget(
+                                    controller.bill.billName ?? "",
+                                    fontSize: 24.sp,
+                                    fontWeight: FontWeight.bold,
+                                    textAlign: TextAlign.start,
+                                    maxLines: 1,
+                                  ),
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(top: 1.5.h),
+                                padding: EdgeInsets.only(top: .5.h),
+                                child: TextWidget(
+                                  "Venc.: ${controller.bill.formattedDate}",
+                                  fontSize: 19.sp,
+                                  fontWeight: FontWeight.bold,
+                                  textAlign: TextAlign.start,
+                                  maxLines: 1,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 2.h),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
@@ -101,7 +99,8 @@ class _BillPageState extends State<BillPage> {
                                       firstValue: controller.firstValueCard,
                                       titleSecondValue: controller.secondTitleValueCard,
                                       secondValue: controller.secondValueCard,
-                                    )
+                                      gradientColor: controller.bill.getGradient,
+                                    ),
 
                                   ],
                                 ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import '../stylePages/appColors.dart';
 import 'textWidget.dart';
 
 class TwoInformationsValueWidget extends StatelessWidget {
@@ -8,6 +7,7 @@ class TwoInformationsValueWidget extends StatelessWidget {
   final String firstValue;
   final String titleSecondValue;
   final String secondValue;
+  final List<Color> gradientColor;
 
   const TwoInformationsValueWidget(
       { Key? key,
@@ -15,6 +15,7 @@ class TwoInformationsValueWidget extends StatelessWidget {
         required this.firstValue,
         required this.titleSecondValue,
         required this.secondValue,
+        required this.gradientColor,
       }) : super(key: key);
 
   @override
@@ -27,7 +28,7 @@ class TwoInformationsValueWidget extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: AppColors().gradientColor,
+          colors: gradientColor,
         ),
       ),
       child: Padding(
