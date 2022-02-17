@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:financas_controle/2-app/enums/enums.dart';
 import 'package:financas_controle/2-app/views/componentsWidgets/textWidget.dart';
 import 'package:flutter/material.dart';
@@ -49,82 +50,91 @@ class _BillPageState extends State<BillPage> {
                     width: 100.w,
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(top: 12.h),
-                  child: Scaffold(
-                    backgroundColor: AppColors().transparentColor,
-                    body: Padding(
-                      padding: EdgeInsets.only(left: 5.w, right: 5.w),
-                      child: Card(
-                        color: AppColors().standardColor,
-                        elevation: 10,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(2.5.h),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(2.h),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(right: 1.5.w),
-                                child: Container(
-                                  width: 90.w - 4.h,
+                CarouselSlider.builder(
+                  itemCount: 15,
+                  options: CarouselOptions(
+                    height: 100.h,
+                    viewportFraction: 0.9,
+                    enlargeStrategy: CenterPageEnlargeStrategy.height,
+                    enlargeCenterPage: true,
+                    enableInfiniteScroll: false,
+                  ),
+                  itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
+                    return Padding(
+                      padding: EdgeInsets.only(top: 12.h),
+                      child: Scaffold(
+                        backgroundColor: AppColors().transparentColor,
+                        body: Card(
+                          color: AppColors().standardColor,
+                          elevation: 10,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(2.5.h),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(2.h),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(right: 1.5.w),
+                                  child: Container(
+                                    width: 90.w - 4.h,
+                                    child: TextWidget(
+                                      controller.bill.billName ?? "",
+                                      fontSize: 24.sp,
+                                      fontWeight: FontWeight.bold,
+                                      textAlign: TextAlign.start,
+                                      maxLines: 1,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(top: .5.h),
                                   child: TextWidget(
-                                    controller.bill.billName ?? "",
-                                    fontSize: 24.sp,
+                                    "Venc.: ${controller.bill.formattedDate}",
+                                    fontSize: 19.sp,
                                     fontWeight: FontWeight.bold,
                                     textAlign: TextAlign.start,
                                     maxLines: 1,
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: .5.h),
-                                child: TextWidget(
-                                  "Venc.: ${controller.bill.formattedDate}",
-                                  fontSize: 19.sp,
-                                  fontWeight: FontWeight.bold,
-                                  textAlign: TextAlign.start,
-                                  maxLines: 1,
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 2.h),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    TwoInformationsValueWidget(
-                                      titleFirstValue: controller.firstTitleValueCard,
-                                      firstValue: controller.firstValueCard,
-                                      titleSecondValue: controller.secondTitleValueCard,
-                                      secondValue: controller.secondValueCard,
-                                      gradientColor: controller.bill.getGradient,
-                                    ),
+                                Padding(
+                                  padding: EdgeInsets.only(top: 2.h),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      TwoInformationsValueWidget(
+                                        titleFirstValue: controller.firstTitleValueCard,
+                                        firstValue: controller.firstValueCard,
+                                        titleSecondValue: controller.secondTitleValueCard,
+                                        secondValue: controller.secondValueCard,
+                                        gradientColor: controller.bill.getGradient,
+                                      ),
 
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                    floatingActionButton: controller.bill.statusBill != StatusBill.alreadyPaid?
-                      FloatingActionButton.extended(
-                        onPressed: () {
+                        floatingActionButton: controller.bill.statusBill != StatusBill.alreadyPaid?
+                        FloatingActionButton.extended(
+                          onPressed: () {
 
-                        },
-                        label: TextWidget(
-                            "Marcar como pago!"
-                        ),
-                        icon: Icon(
-                            Icons.done_outline_sharp
-                        ),
-                        backgroundColor: AppColors().greenColor,
-                        elevation: 3,
-                      ) : null,
-                  ),
+                          },
+                          label: TextWidget(
+                              "Pago!"
+                          ),
+                          icon: Icon(
+                              Icons.done_outline_sharp
+                          ),
+                          backgroundColor: AppColors().greenColor,
+                          elevation: 3,
+                        ) : null,
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
