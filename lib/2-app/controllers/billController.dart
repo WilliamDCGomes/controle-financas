@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../../1-base/models/bill.dart';
@@ -12,6 +12,7 @@ class BillController extends GetxController {
   late String secondTitleValueCard;
   late String secondValueCard;
   late List<Color> gradientColor;
+  late List<Widget> PlotBillList;
 
   BillController(this.bill){
     _getStatusBarColorOpen();

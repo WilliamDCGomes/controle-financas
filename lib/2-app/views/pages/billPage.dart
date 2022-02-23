@@ -1,5 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:financas_controle/2-app/enums/enums.dart';
 import 'package:financas_controle/2-app/views/componentsWidgets/textWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,7 +6,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import '../../../1-base/models/bill.dart';
 import '../../controllers/billController.dart';
 import '../componentsWidgets/billCardWidget.dart';
-import '../componentsWidgets/twoInformationsValueWidget.dart';
+import '../componentsWidgets/plotViewCardWidget.dart';
 import '../stylePages/appColors.dart';
 
 class BillPage extends StatefulWidget {
@@ -60,81 +59,50 @@ class _BillPageState extends State<BillPage> {
                     enableInfiniteScroll: false,
                   ),
                   itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
-                    return Padding(
-                      padding: EdgeInsets.only(top: 12.h),
-                      child: Scaffold(
-                        backgroundColor: AppColors().transparentColor,
-                        body: Card(
-                          color: AppColors().standardColor,
-                          elevation: 10,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(2.5.h),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.all(2.h),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(right: 1.5.w),
-                                  child: Container(
-                                    width: 90.w - 4.h,
-                                    child: TextWidget(
-                                      controller.bill.billName ?? "",
-                                      fontSize: 24.sp,
-                                      fontWeight: FontWeight.bold,
-                                      textAlign: TextAlign.start,
-                                      maxLines: 1,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: .5.h),
-                                  child: TextWidget(
-                                    "Venc.: ${controller.bill.formattedDate}",
-                                    fontSize: 19.sp,
-                                    fontWeight: FontWeight.bold,
-                                    textAlign: TextAlign.start,
-                                    maxLines: 1,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: 2.h),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      TwoInformationsValueWidget(
-                                        titleFirstValue: controller.firstTitleValueCard,
-                                        firstValue: controller.firstValueCard,
-                                        titleSecondValue: controller.secondTitleValueCard,
-                                        secondValue: controller.secondValueCard,
-                                        gradientColor: controller.bill.getGradient,
-                                      ),
-
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        floatingActionButton: controller.bill.statusBill != StatusBill.alreadyPaid?
-                        FloatingActionButton.extended(
-                          onPressed: () {
-
-                          },
-                          label: TextWidget(
-                              "Pago!"
-                          ),
-                          icon: Icon(
-                              Icons.done_outline_sharp
-                          ),
-                          backgroundColor: AppColors().greenColor,
-                          elevation: 3,
-                        ) : null,
-                      ),
+                    return PlotViewCardWidget(
+                      bill: controller.bill,
+                      firstTitleValueCard: controller.firstTitleValueCard,
+                      firstValueCard: controller.firstValueCard,
+                      secondTitleValueCard: controller.secondTitleValueCard,
+                      secondValueCard: controller.secondValueCard,
                     );
                   },
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 4.h),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        onTap: (){
+
+                        },
+                        child: Icon(
+                          Icons.arrow_back_ios_outlined,
+                          color: AppColors().whiteColor,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 5.w, right: 5.w),
+                        child: TextWidget(
+                          "Fevereiro 2022",
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.bold,
+                          textAlign: TextAlign.start,
+                          maxLines: 1,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: (){
+
+                        },
+                        child: Icon(
+                          Icons.arrow_forward_ios_outlined,
+                          color: AppColors().whiteColor,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
