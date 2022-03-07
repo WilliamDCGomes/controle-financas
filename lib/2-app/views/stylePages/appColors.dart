@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 class AppColors {
@@ -29,6 +27,12 @@ class AppColors {
   final Color darkBlueColor = const Color(0XFF004373);
   final Color googleLogoBackgroundColor = const Color(0XFFD34836);
   final Color facebookLogoBackgroundColor = const Color(0XFF3B5998);
+  final Color blueColorStatusBar = const Color(0XFF23305A);
+  final Color redColorStatusBar = const Color(0XFF972321);
+  final Color orangeColorStatusBar = const Color(0XFFF4CD94);
+  final Color purpleColorStatusBar = const Color(0XFF824588);
+  final Color greenColorStatusBar = const Color(0XFF326153);
+
   final List<Color> gradientColor = const [Color(0XFF484592), Color(0XFF619793)];
   final List<Color> investmentGradientColor = const [Color(0XFF67647F), Color(0XFF23305A)];
   final List<Color> alreadyPaidGradientColor = const [Color(0XFF588F7A), Color(0XFF326153)];

@@ -32,17 +32,17 @@ android {
     productFlavors {
         dev {
             dimension "flavor-type"
-            applicationId "br.com.example.controle_financeiro_dev"
+            applicationId "com.williamdcgomes.controle_financeiro_dev"
             resValue "string", "app_name", "Controle Financeiro DEV"
         }
         hmlg {
             dimension "flavor-type"
-            applicationId "br.com.example.controle_financeiro_hmlg"
+            applicationId "com.williamdcgomes.controle_financeiro_hmlg"
             resValue "string", "app_name", "Controle Financeiro HMLG"
         }
         prod {
             dimension "flavor-type"
-            applicationId "br.com.example.controle_financeiro"
+            applicationId "com.williamdcgomes.controle_financeiro"
             resValue "string", "app_name", "Controle Financeiro"
         }
     }
@@ -66,7 +66,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.financas_controle"
+        applicationId "com.williamdcgomes.financas_controle"
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()

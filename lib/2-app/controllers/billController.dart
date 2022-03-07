@@ -1,4 +1,4 @@
-import 'dart:ui';
+import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -11,17 +11,22 @@ class BillController extends GetxController {
   late String firstValueCard;
   late String secondTitleValueCard;
   late String secondValueCard;
+  late bool hasPlots;
+  late int _plotOnScreen;
   late List<Color> gradientColor;
   late List<Widget> PlotBillList;
+  late CarouselController carouselController;
 
   BillController(this.bill){
     _getStatusBarColorOpen();
     _getCardInformations();
+    _hasPlots();
+    _initializeVariables();
   }
 
   _getStatusBarColorOpen(){
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: bill.getColor,
+      statusBarColor: bill.getStatusBarColor,
     ));
   }
 
@@ -46,9 +51,36 @@ class BillController extends GetxController {
     }
   }
 
+  _hasPlots(){
+      hasPlots = (bill.plots ?? 0) > 1;
+  }
+
+  _initializeVariables(){
+    carouselController = CarouselController();
+    _plotOnScreen = 1;
+  }
+
   getStatusBarColorClose(){
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: AppColors().standardColor,
     ));
+  }
+
+  nextBill() async {
+    await carouselController.onReady;
+    if(_plotOnScreen < (bill.plots ?? 1)){
+      carouselController.nextPage();
+      _getCardInformations();
+      _plotOnScreen++;
+    }
+  }
+
+  previewsBill() async {
+    await carouselController.onReady;
+    if(_plotOnScreen > 1) {
+      carouselController.previousPage();
+      _getCardInformations();
+      _plotOnScreen--;
+    }
   }
 }

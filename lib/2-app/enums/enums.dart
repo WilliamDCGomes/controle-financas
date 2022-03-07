@@ -10,3 +10,12 @@ enum StatusBill {
   investment,
   futureBill,
 }
+enum FormPayment {
+  money,        // Dinheiro
+  check,        // Cheque
+  creditCard,   // Cartão de Crédito
+  debtCard,     // Cartão de Débito
+  bankTransfer, // Tranferência Bancária
+  bankSlip,     // Boleto Bancário
+  other,        // Outra Forma de Pagamento
+}

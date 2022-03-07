@@ -50,7 +50,8 @@ class _BillPageState extends State<BillPage> {
                   ),
                 ),
                 CarouselSlider.builder(
-                  itemCount: 15,
+                  carouselController: controller.carouselController,
+                  itemCount: controller.bill.plots ?? 1,
                   options: CarouselOptions(
                     height: 100.h,
                     viewportFraction: 0.9,
@@ -73,32 +74,36 @@ class _BillPageState extends State<BillPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      GestureDetector(
-                        onTap: (){
-
-                        },
-                        child: Icon(
-                          Icons.arrow_back_ios_outlined,
-                          color: AppColors().whiteColor,
+                      Visibility(
+                        visible: controller.hasPlots,
+                        child: GestureDetector(
+                          onTap: () async => await controller.previewsBill(),
+                          child: Icon(
+                            Icons.arrow_back_ios_outlined,
+                            color: AppColors().whiteColor,
+                            size: 3.h,
+                          ),
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 5.w, right: 5.w),
                         child: TextWidget(
-                          "Fevereiro 2022",
+                          controller.bill.formattedDateInformation,
                           fontSize: 20.sp,
                           fontWeight: FontWeight.bold,
                           textAlign: TextAlign.start,
                           maxLines: 1,
                         ),
                       ),
-                      GestureDetector(
-                        onTap: (){
-
-                        },
-                        child: Icon(
-                          Icons.arrow_forward_ios_outlined,
-                          color: AppColors().whiteColor,
+                      Visibility(
+                        visible: controller.hasPlots,
+                        child: GestureDetector(
+                          onTap: () async => await controller.nextBill(),
+                          child: Icon(
+                            Icons.arrow_forward_ios_outlined,
+                            color: AppColors().whiteColor,
+                            size: 3.h,
+                          ),
                         ),
                       ),
                     ],

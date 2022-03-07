@@ -36,67 +36,198 @@ class PlotViewCardWidget extends StatelessWidget {
           ),
           child: Padding(
             padding: EdgeInsets.all(2.h),
-            child: Column(
-
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(right: 1.5.w),
-                  child: Container(
-                    width: 90.w - 4.h,
-                    child: TextWidget(
-                      bill.billName ?? "",
-                      fontSize: 24.sp,
-                      fontWeight: FontWeight.bold,
-                      textAlign: TextAlign.start,
-                      maxLines: 1,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: .5.h),
-                  child: TextWidget(
-                    "Venc.: ${bill.formattedDate}",
-                    fontSize: 19.sp,
-                    fontWeight: FontWeight.bold,
-                    textAlign: TextAlign.start,
-                    maxLines: 1,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 2.h),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      TwoInformationsValueWidget(
-                        titleFirstValue: firstTitleValueCard,
-                        firstValue: firstValueCard,
-                        titleSecondValue: secondTitleValueCard,
-                        secondValue: secondValueCard,
-                        gradientColor: bill.getGradient,
+            child: SizedBox(
+              height: 85.h,
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(right: 1.5.w),
+                      child: Container(
+                        width: 90.w - 4.h,
+                        child: TextWidget(
+                          bill.billName ?? "",
+                          fontSize: 24.sp,
+                          fontWeight: FontWeight.bold,
+                          textAlign: TextAlign.center,
+                          maxLines: 1,
+                        ),
                       ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 2.h),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          TwoInformationsValueWidget(
+                            titleFirstValue: firstTitleValueCard,
+                            firstValue: firstValueCard,
+                            titleSecondValue: secondTitleValueCard,
+                            secondValue: secondValueCard,
+                            gradientColor: bill.getGradient,
+                          ),
 
-                    ],
-                  ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 2.h),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          TextWidget(
+                            "Vencimento:",
+                            fontSize: 19.sp,
+                            fontWeight: FontWeight.bold,
+                            textAlign: TextAlign.start,
+                            maxLines: 1,
+                          ),
+                          TextWidget(
+                            "${bill.formattedDate}",
+                            fontSize: 22.sp,
+                            fontWeight: FontWeight.bold,
+                            textAlign: TextAlign.start,
+                            maxLines: 1,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 3.h),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          TextWidget(
+                            "Status Atual:",
+                            fontSize: 19.sp,
+                            fontWeight: FontWeight.bold,
+                            textAlign: TextAlign.end,
+                            maxLines: 1,
+                          ),
+                          TextWidget(
+                            "${bill.getStatusBillName}",
+                            fontSize: 22.sp,
+                            fontWeight: FontWeight.bold,
+                            textAlign: TextAlign.end,
+                            maxLines: 1,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 2.h),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          TextWidget(
+                            "Vencimento:",
+                            fontSize: 19.sp,
+                            fontWeight: FontWeight.bold,
+                            textAlign: TextAlign.start,
+                            maxLines: 1,
+                          ),
+                          TextWidget(
+                            "${bill.formattedDate}",
+                            fontSize: 22.sp,
+                            fontWeight: FontWeight.bold,
+                            textAlign: TextAlign.start,
+                            maxLines: 1,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 3.h),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          TextWidget(
+                            "Dia do Pagamento:",
+                            fontSize: 19.sp,
+                            fontWeight: FontWeight.bold,
+                            textAlign: TextAlign.end,
+                            maxLines: 1,
+                          ),
+                          TextWidget(
+                            "${bill.formattedWhenPaid}",
+                            fontSize: 22.sp,
+                            fontWeight: FontWeight.bold,
+                            textAlign: TextAlign.end,
+                            maxLines: 1,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 3.h),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          TextWidget(
+                            "Forma de Pagamento:",
+                            fontSize: 19.sp,
+                            fontWeight: FontWeight.bold,
+                            textAlign: TextAlign.start,
+                            maxLines: 1,
+                          ),
+                          TextWidget(
+                            "${bill.getFormPayment}",
+                            fontSize: 22.sp,
+                            fontWeight: FontWeight.bold,
+                            textAlign: TextAlign.start,
+                            maxLines: 1,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         ),
-        floatingActionButton: bill.statusBill != StatusBill.alreadyPaid?
+        floatingActionButton: bill.statusBill != StatusBill.alreadyPaid ?
         FloatingActionButton.extended(
           onPressed: () {
 
           },
           label: TextWidget(
-              "Pago!"
+            "Pagar!",
+            fontWeight: FontWeight.bold,
           ),
           icon: Icon(
-              Icons.done_outline_sharp
+            Icons.monetization_on,
+            color: AppColors().whiteColor,
           ),
-          backgroundColor: AppColors().greenColor,
+          backgroundColor: AppColors().greenCardColor,
           elevation: 3,
-        ) : null,
+        ) : Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(2.5.h),
+            color: AppColors().greenColor,
+          ),
+          child: Padding(
+            padding: EdgeInsets.all(1.h),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(right: 1.h),
+                  child: Icon(
+                    Icons.done_outline_sharp,
+                    color: AppColors().whiteColor,
+                  ),
+                ),
+                TextWidget(
+                  "Pago!",
+                  fontWeight: FontWeight.bold,
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
