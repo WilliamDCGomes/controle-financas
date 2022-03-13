@@ -10,7 +10,6 @@ class Bill {
   String? billName;
   String? otherPaymentForm;
   late bool fixedBill;
-  bool? isInvestment;
   bool? isAFutureBill;
   int? billCode;
   int? plots;
@@ -61,6 +60,12 @@ class Bill {
       default:
         return AppColors().greenColorStatusBar;
     }
+  }
+
+  get getAccountType {
+    if(fixedBill)
+      return "Conta Fixa";
+    return "Conta Periódica";
   }
 
   get getImagebackground {

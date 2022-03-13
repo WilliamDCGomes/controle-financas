@@ -77,39 +77,17 @@ class PlotViewCardWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           TextWidget(
-                            "Vencimento:",
+                            "Código da Conta:",
                             fontSize: 19.sp,
                             fontWeight: FontWeight.bold,
                             textAlign: TextAlign.start,
                             maxLines: 1,
                           ),
                           TextWidget(
-                            "${bill.formattedDate}",
+                            "${bill.billCode}",
                             fontSize: 22.sp,
                             fontWeight: FontWeight.bold,
                             textAlign: TextAlign.start,
-                            maxLines: 1,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 3.h),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          TextWidget(
-                            "Status Atual:",
-                            fontSize: 19.sp,
-                            fontWeight: FontWeight.bold,
-                            textAlign: TextAlign.end,
-                            maxLines: 1,
-                          ),
-                          TextWidget(
-                            "${bill.getStatusBillName}",
-                            fontSize: 22.sp,
-                            fontWeight: FontWeight.bold,
-                            textAlign: TextAlign.end,
                             maxLines: 1,
                           ),
                         ],
@@ -124,35 +102,13 @@ class PlotViewCardWidget extends StatelessWidget {
                             "Vencimento:",
                             fontSize: 19.sp,
                             fontWeight: FontWeight.bold,
-                            textAlign: TextAlign.start,
+                            textAlign: TextAlign.end,
                             maxLines: 1,
                           ),
                           TextWidget(
                             "${bill.formattedDate}",
                             fontSize: 22.sp,
                             fontWeight: FontWeight.bold,
-                            textAlign: TextAlign.start,
-                            maxLines: 1,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 3.h),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          TextWidget(
-                            "Dia do Pagamento:",
-                            fontSize: 19.sp,
-                            fontWeight: FontWeight.bold,
-                            textAlign: TextAlign.end,
-                            maxLines: 1,
-                          ),
-                          TextWidget(
-                            "${bill.formattedWhenPaid}",
-                            fontSize: 22.sp,
-                            fontWeight: FontWeight.bold,
                             textAlign: TextAlign.end,
                             maxLines: 1,
                           ),
@@ -165,20 +121,92 @@ class PlotViewCardWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           TextWidget(
-                            "Forma de Pagamento:",
+                            "Status Atual:",
                             fontSize: 19.sp,
                             fontWeight: FontWeight.bold,
                             textAlign: TextAlign.start,
                             maxLines: 1,
                           ),
                           TextWidget(
-                            "${bill.getFormPayment}",
+                            "${bill.getStatusBillName}",
                             fontSize: 22.sp,
                             fontWeight: FontWeight.bold,
                             textAlign: TextAlign.start,
                             maxLines: 1,
                           ),
                         ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 2.h),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          TextWidget(
+                            "Tipo de Conta:",
+                            fontSize: 19.sp,
+                            fontWeight: FontWeight.bold,
+                            textAlign: TextAlign.end,
+                            maxLines: 1,
+                          ),
+                          TextWidget(
+                            "${bill.getAccountType} ",
+                            fontSize: 22.sp,
+                            fontWeight: FontWeight.bold,
+                            textAlign: TextAlign.end,
+                            maxLines: 1,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Visibility(
+                      visible: bill.statusBill == StatusBill.alreadyPaid,
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 3.h),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            TextWidget(
+                              "Dia do Pagamento:",
+                              fontSize: 19.sp,
+                              fontWeight: FontWeight.bold,
+                              textAlign: TextAlign.start,
+                              maxLines: 1,
+                            ),
+                            TextWidget(
+                              "${bill.formattedWhenPaid}",
+                              fontSize: 22.sp,
+                              fontWeight: FontWeight.bold,
+                              textAlign: TextAlign.start,
+                              maxLines: 1,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Visibility(
+                      visible: bill.statusBill == StatusBill.alreadyPaid,
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 3.h, bottom: 10.h),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            TextWidget(
+                              "Forma de Pagamento:",
+                              fontSize: 19.sp,
+                              fontWeight: FontWeight.bold,
+                              textAlign: TextAlign.end,
+                              maxLines: 1,
+                            ),
+                            TextWidget(
+                              "${bill.getFormPayment}",
+                              fontSize: 22.sp,
+                              fontWeight: FontWeight.bold,
+                              textAlign: TextAlign.end,
+                              maxLines: 1,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],

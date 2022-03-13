@@ -45,6 +45,7 @@ class MainMenuController extends GetxController {
           bill.billName = "Faculdade";
           bill.statusBill = StatusBill.alreadyPaid;
           bill.billValue = 743.59;
+          bill.whenPaid = DateTime.now();
           break;
         case 1:
           bill.billCode = 2;
@@ -63,6 +64,7 @@ class MainMenuController extends GetxController {
           bill.billName = "Netflix";
           bill.statusBill = StatusBill.alreadyPaid;
           bill.billValue = 25.9;
+          bill.whenPaid = DateTime.now();
           break;
         case 4:
           bill.billCode = 5;
@@ -149,6 +151,7 @@ class MainMenuController extends GetxController {
           break;
       }
       bill.statusBill = StatusBill.alreadyPaid;
+      bill.whenPaid = DateTime.now();
       bill.billDate = DateTime.now().add(Duration(days: Random().nextInt(50) - 20));
       billsAlreadyPaid.add(bill);
     }

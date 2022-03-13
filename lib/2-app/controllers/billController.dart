@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../../1-base/models/bill.dart';
+import '../enums/enums.dart';
 import '../views/stylePages/appColors.dart';
 
 class BillController extends GetxController {
@@ -31,10 +32,10 @@ class BillController extends GetxController {
   }
 
   _getCardInformations(){
-    if(bill.isInvestment ?? false){
-      firstTitleValueCard = "Valor Guardado:";
+    if(bill.statusBill != null && bill.statusBill == StatusBill.investment){
+      firstTitleValueCard = "Objetivo:";
       firstValueCard = "R\$ ${bill.getFormattedValueAlreadyHave}";
-      secondTitleValueCard = "Meta:";
+      secondTitleValueCard = "Valor Atual:";
       secondValueCard = "R\$ ${bill.getFormattedValueWantAchieve}";
     }
     else if(bill.plots != null && bill.plots! > 1){
