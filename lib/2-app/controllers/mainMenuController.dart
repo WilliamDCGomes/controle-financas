@@ -1,15 +1,17 @@
 import 'dart:math';
-import 'dart:ui';
 import 'package:financas_controle/1-base/models/bill.dart';
 import 'package:financas_controle/2-app/enums/enums.dart';
 import 'package:get/get.dart';
+import '../views/pages/billPage.dart';
 
 class MainMenuController extends GetxController {
   late String nameUser;
   late String nameInitials;
   late RxBool hasPicture;
+  late RxDouble billToPay;
+  late RxDouble billPaid;
+  late RxDouble amountYouHave;
   late RxString welcomePhrase;
-  late final List<Color> colors;
   late final List<Bill> fixedBills;
   late final List<Bill> periodicExpenses;
   late final List<Bill> billsAlreadyPaid;
@@ -25,7 +27,9 @@ class MainMenuController extends GetxController {
 
   _startVariables(){
     hasPicture = false.obs;
-    colors = [Color(0XFF484592), Color(0XFF619793)];
+    billToPay = 0.0.obs;
+    billPaid = 0.0.obs;
+    amountYouHave = 0.0.obs;
     fixedBills = <Bill>[];
     periodicExpenses = <Bill>[];
     billsAlreadyPaid = <Bill>[];
@@ -41,6 +45,7 @@ class MainMenuController extends GetxController {
           bill.billName = "Faculdade";
           bill.statusBill = StatusBill.alreadyPaid;
           bill.billValue = 743.59;
+          bill.whenPaid = DateTime.now();
           break;
         case 1:
           bill.billCode = 2;
@@ -59,6 +64,7 @@ class MainMenuController extends GetxController {
           bill.billName = "Netflix";
           bill.statusBill = StatusBill.alreadyPaid;
           bill.billValue = 25.9;
+          bill.whenPaid = DateTime.now();
           break;
         case 4:
           bill.billCode = 5;
@@ -92,13 +98,15 @@ class MainMenuController extends GetxController {
           bill.billCode = 8;
           bill.fixedBill = true;
           bill.billName = "Credicard";
-          bill.billValue = 254.47;
+          bill.billValue = 25004.47;
           break;
         case 3:
           bill.billCode = 9;
           bill.billName = "Havan";
           bill.statusBill = StatusBill.late;
           bill.billValue = 307.54;
+          bill.plots = 10;
+          bill.plotsPaid = 4;
           break;
         case 4:
           bill.billCode = 10;
@@ -129,7 +137,7 @@ class MainMenuController extends GetxController {
         case 2:
           bill.billCode = 8;
           bill.billName = "Credicard";
-          bill.billValue = 254.47;
+          bill.billValue = 25004.47;
           break;
         case 3:
           bill.billCode = 11;
@@ -143,6 +151,7 @@ class MainMenuController extends GetxController {
           break;
       }
       bill.statusBill = StatusBill.alreadyPaid;
+      bill.whenPaid = DateTime.now();
       bill.billDate = DateTime.now().add(Duration(days: Random().nextInt(50) - 20));
       billsAlreadyPaid.add(bill);
     }
@@ -218,4 +227,22 @@ class MainMenuController extends GetxController {
     else
       welcomePhrase = "Boa noite!".obs;
   }
+
+  openBill(Bill billToOpen){
+    Get.to(BillPage(billToOpen));
+  }
+
+  //#region Encapsulation
+  get getFormattedValueBillToPay {
+    return billToPay.toStringAsFixed(2).replaceAll('.', ',');
+  }
+
+  get getFormattedValueBillPaid {
+    return billPaid.toStringAsFixed(2).replaceAll('.', ',');
+  }
+
+  get getFormattedValueAmountYouHave {
+    return amountYouHave.toStringAsFixed(2).replaceAll('.', ',');
+  }
+  //#endregion
 }

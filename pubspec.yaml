@@ -46,6 +46,7 @@ dependencies:
   shimmer: ^2.0.0
   sqflite: ^2.0.0+3
   uuid: ^3.0.5
+  carousel_slider: ^4.0.0
 
 dev_dependencies:
   flutter_launcher_icons: ^0.9.2
@@ -62,23 +63,23 @@ flavorizr:
       app:
         name: "Controle Financeiro DEV"
       android:
-        applicationId: "br.com.example.controle_financeiro_dev"
+        applicationId: "com.williamdcgomes.controle_financeiro_dev"
       ios:
-        bundleId: "br.com.example.controle_financeiro_dev"
+        bundleId: "com.williamdcgomes.controle_financeiro_dev"
     hmlg:
       app:
         name: "Controle Financeiro HMLG"
       android:
-        applicationId: "br.com.example.controle_financeiro_hmlg"
+        applicationId: "com.williamdcgomes.controle_financeiro_hmlg"
       ios:
-        bundleId: "br.com.example.controle_financeiro_hmlg"
+        bundleId: "com.williamdcgomes.controle_financeiro_hmlg"
     prod:
       app:
         name: "Controle Financeiro"
       android:
-        applicationId: "br.com.example.controle_financeiro"
+        applicationId: "com.williamdcgomes.controle_financeiro"
       ios:
-        bundleId: "br.com.example.controle_financeiro"
+        bundleId: "com.williamdcgomes.controle_financeiro"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
