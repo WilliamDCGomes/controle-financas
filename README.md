@@ -1,5 +1,4 @@
-# Controle Finanças
-# Manage Finances
+# Controle Finanças | Manage Finances
 
 ## Este aplicativo foi feito na intenção de facilitar o controle da vida financeira dos usuários. Ele tem como objetivo registrar todos os gastos e lucros do usuário, proporcionando uma visualização facilitada de como está sua vida financeira e separar suas contas de forma categorizada.
 ## This application was created with the intention of making it easier to manage users' financial lives. Its goal is to record all of the user's expenses and earnings, providing an easily understandable visualization of their financial life and categorizing their accounts.
