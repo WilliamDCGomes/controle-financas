@@ -1,6 +1,6 @@
 # Controle Finanças
 
-## Esse aplicativo foi feito na intenção de facilitar o controle da vida financeira dos usuários. Ele tem como objetivo registrar todos os gastos e lucros do usuário, proporcionando uma visualização facilitada de como está sua vida financeira e separar suas contas de forma categorizada.
+## Este aplicativo foi feito na intenção de facilitar o controle da vida financeira dos usuários. Ele tem como objetivo registrar todos os gastos e lucros do usuário, proporcionando uma visualização facilitada de como está sua vida financeira e separar suas contas de forma categorizada.
 
 ### Tela de Introdução
 
